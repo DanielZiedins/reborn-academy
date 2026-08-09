@@ -96,7 +96,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
             <Loader2 size={18} className="animate-spin" />
           ) : (
             <>
-              Join Waitlist <ArrowRight size={16} />
+              Enter The Academy <ArrowRight size={16} />
             </>
           )}
         </button>

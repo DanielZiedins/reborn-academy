@@ -14,9 +14,10 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Reborn Academy — Faith-Based Personal Growth Community",
+  metadataBase: new URL("https://www.reborn-academy.com"),
+  title: "Reborn Academy — Faith-Based Transformation Academy",
   description:
-    "The high-value faith-based development academy built by Mike Gagat and Daniel Ziedins. Grow in faith, fitness, business, finances, and family. Join the waitlist for the Reborn relaunch.",
+    "A faith-based development academy for ambitious believers. Faith, fitness, business, finances, family — built by Mike Gagat and Daniel Ziedins. Enter the waitlist.",
   keywords: [
     "Reborn Academy",
     "faith-based",
