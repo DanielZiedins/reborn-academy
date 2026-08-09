@@ -17,6 +17,7 @@ export const navLinks = [
   { href: "#programs", label: "Programs" },
   { href: "#academy", label: "Academy" },
   { href: "#community", label: "Community" },
+  { href: "#faq", label: "FAQ" },
   { href: "#founders", label: "About" },
 ];
 

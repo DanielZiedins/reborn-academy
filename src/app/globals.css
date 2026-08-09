@@ -842,6 +842,38 @@ input {
   background: var(--charcoal);
 }
 
+/* FAQ — SEO / AEO */
+.faq-list {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.faq-item {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.faq-answer {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #888;
+}
+
 /* Video */
 .video-frame {
   position: relative;

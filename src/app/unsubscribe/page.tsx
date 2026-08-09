@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Unsubscribed",
+  description: `Unsubscribe from ${SITE_NAME} waitlist emails.`,
+  robots: { index: false, follow: false },
+  alternates: { canonical: `${SITE_URL}/unsubscribe` },
+};
 
 type Props = {
   searchParams: Promise<{ token?: string }>;
@@ -33,7 +42,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
           <h1 className="text-2xl font-extrabold text-white">Invalid link</h1>
           <p className="mt-3 text-[#888]">This unsubscribe link is missing a token.</p>
           <Link href="/" className="mt-6 inline-block text-[#b8962e] underline">
-            Return home
+            Return to {SITE_NAME}
           </Link>
         </div>
       </main>
@@ -50,7 +59,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
         </h1>
         <p className="mt-3 text-[#888]">
           {ok
-            ? "You've been removed from the Reborn Academy waitlist."
+            ? `You've been removed from the ${SITE_NAME} waitlist.`
             : "We couldn't process your request. Please email hello@thykingdom.net"}
         </p>
         <Link href="/" className="mt-6 inline-block text-[#b8962e] underline">

@@ -1,44 +1,41 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
+import { JsonLdScripts } from "@/components/seo/json-ld";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 const bebas = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-bebas",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.reborn-academy.com"),
-  title: "Reborn Academy — Faith-Based Transformation Academy",
-  description:
-    "A faith-based development academy for ambitious believers. Faith, fitness, business, finances, family — built by Mike Gagat and Daniel Ziedins. Enter the waitlist.",
-  keywords: [
-    "Reborn Academy",
-    "faith-based",
-    "personal growth",
-    "Christian community",
-    "business",
-    "fitness",
-    "Mike Gagat",
-    "Daniel Ziedins",
-  ],
-  openGraph: {
-    title: "Reborn Academy — Be First to Know",
-    description:
-      "A faith-based development academy for believers who refuse to drift. Join the waitlist.",
-    images: ["/images/phoenix.png"],
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | Faith-Based Transformation Academy`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   icons: {
     icon: "/images/icon.png",
     apple: "/images/icon.png",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -48,7 +45,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
-      <body>{children}</body>
+      <head>
+        <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />
+      </head>
+      <body>
+        <JsonLdScripts />
+        {children}
+      </body>
     </html>
   );
 }
