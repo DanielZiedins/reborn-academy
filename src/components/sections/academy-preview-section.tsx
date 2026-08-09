@@ -1,22 +1,23 @@
-import { Reveal } from "@/components/ui/reveal";
+import { FadeInUp } from "@/components/ui/motion";
 
 export function AcademyPreviewSection() {
   return (
     <section id="academy" className="section overflow-hidden">
       <div className="page-width">
-        <Reveal>
-          <span className="eyebrow">Inside the academy</span>
+        <FadeInUp>
+          <span className="eyebrow">Inside the academy · Coming soon</span>
           <h2 className="display mt-4 text-[clamp(32px,5vw,52px)] text-white">
-            See the environment before you enter
+            Epic dashboard + custom app
           </h2>
           <p className="mt-4 max-w-2xl text-[#999]">
-            Curriculum, progress, community, and live sessions — one digital academy. Platform preview
-            while we rebuild for relaunch.
+            A member dashboard and custom Reborn app — courses, progress, community, challenges, and
+            affiliate tools. Preview while we build for November 1, 2026.
           </p>
-        </Reveal>
+        </FadeInUp>
 
-        <Reveal delay={120}>
-          <div className="academy-browser mt-14">
+        <FadeInUp delay={0.15}>
+          <div className="academy-browser mt-14 coming-soon-overlay-wrap">
+            <div className="coming-soon-ribbon">Coming November 1, 2026</div>
             <div className="academy-browser-bar">
               <div className="browser-dots">
                 <span /><span /><span />
@@ -35,42 +36,43 @@ export function AcademyPreviewSection() {
                   <li>Finances</li>
                   <li>Family</li>
                   <li>Community</li>
+                  <li>Affiliate</li>
                 </ul>
                 <div className="sidebar-progress">
-                  <p>Relaunch progress</p>
+                  <p>Build progress</p>
                   <div className="progress-bar"><div className="progress-fill" /></div>
-                  <span>Rebuilding for launch</span>
+                  <span>Launching soon</span>
                 </div>
               </aside>
               <div className="academy-main">
                 <div className="academy-hero-card">
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#cc1111]">
-                    Continue learning
+                    Member dashboard
                   </p>
-                  <h3 className="display mt-2 text-3xl text-white">Kingdom Business Foundations</h3>
-                  <p className="mt-2 text-sm text-[#888]">Module 3 · Marketing with integrity</p>
+                  <h3 className="display mt-2 text-3xl text-white">Your Reborn Command Center</h3>
+                  <p className="mt-2 text-sm text-[#888]">Courses · Progress · Community · Rewards</p>
                 </div>
                 <div className="academy-grid">
                   <div className="academy-mini-card">
-                    <span>Live call</span>
-                    <strong>Strategy Session</strong>
-                    <small>Members only</small>
+                    <span>Mobile app</span>
+                    <strong>Reborn App</strong>
+                    <small>Custom build</small>
                   </div>
                   <div className="academy-mini-card">
-                    <span>Challenge</span>
-                    <strong>7-Day Discipline</strong>
-                    <small>Starts at launch</small>
+                    <span>Affiliate</span>
+                    <strong>Refer & Earn</strong>
+                    <small>Built-in program</small>
                   </div>
                   <div className="academy-mini-card">
-                    <span>Community</span>
-                    <strong>RB Insiders</strong>
-                    <small>Premium tier</small>
+                    <span>Rewards</span>
+                    <strong>Giveaways</strong>
+                    <small>Member perks</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </Reveal>
+        </FadeInUp>
       </div>
     </section>
   );

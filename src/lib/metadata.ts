@@ -7,7 +7,7 @@ import {
   SITE_TAGLINE,
 } from "@/lib/seo";
 
-const OG_IMAGE = "/images/phoenix.png";
+const OG_IMAGE = "/images/phoenix-rise.png";
 
 export const homeMetadata: Metadata = {
   title: `${SITE_NAME} | Faith-Based Transformation Academy & Community`,

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 export const navLinks = [
+  { href: "#launch", label: "Launch" },
   { href: "#programs", label: "Programs" },
   { href: "#academy", label: "Academy" },
   { href: "#community", label: "Community" },
@@ -28,7 +29,6 @@ export type Program = {
   desc: string;
   icon: LucideIcon;
   accent: "red" | "gold";
-  image: string;
   tracks?: string[];
 };
 
@@ -40,7 +40,6 @@ export const programs: Program[] = [
     desc: "Scripture, prayer, spiritual warfare, and daily obedience — not performance, but presence.",
     icon: Cross,
     accent: "red",
-    image: "/images/war-room.png",
   },
   {
     id: "fitness",
@@ -49,7 +48,6 @@ export const programs: Program[] = [
     desc: "Training, nutrition, and discipline — stewarding strength for whatever God assigns.",
     icon: Dumbbell,
     accent: "gold",
-    image: "/images/founders.png",
   },
   {
     id: "business",
@@ -58,7 +56,6 @@ export const programs: Program[] = [
     desc: "Real strategies from practitioners: investing, crypto, marketing, e-commerce, social media, real estate.",
     icon: Briefcase,
     accent: "red",
-    image: "/images/phoenix.png",
     tracks: ["Investing", "Crypto", "Marketing", "E-Commerce", "Social Media", "Real Estate"],
   },
   {
@@ -68,7 +65,6 @@ export const programs: Program[] = [
     desc: "Budgeting, investing, debt freedom, and building generational impact without compromise.",
     icon: LineChart,
     accent: "gold",
-    image: "/images/insiders.png",
   },
   {
     id: "family",
@@ -77,7 +73,6 @@ export const programs: Program[] = [
     desc: "Marriage, parenting, and household leadership grounded in biblical foundations.",
     icon: Heart,
     accent: "red",
-    image: "/images/founders-hero.png",
   },
 ];
 
@@ -93,7 +88,7 @@ export const membershipBenefits = [
   {
     icon: BookOpen,
     title: "Academy Curriculum",
-    items: ["Faith, fitness, business, finances, family", "Business & wealth tracks", "New content on relaunch"],
+    items: ["Faith, fitness, business, finances, family", "Business & wealth tracks", "Launching November 1, 2026"],
   },
   {
     icon: Radio,

@@ -140,6 +140,24 @@ function itemListJsonLd(): JsonLd {
   };
 }
 
+function launchEventJsonLd(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: "Reborn Academy Official Re-Launch",
+    description: "Official re-launch of Reborn Academy — faith-based transformation academy with dashboard, app, and community.",
+    startDate: "2026-11-01T00:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+    location: {
+      "@type": "VirtualLocation",
+      url: SITE_URL,
+    },
+    organizer: { "@id": `${SITE_URL}/#organization` },
+    image: ORGANIZATION.image,
+  };
+}
+
 const SCHEMAS = [
   orgJsonLd(),
   websiteJsonLd(),
@@ -148,6 +166,7 @@ const SCHEMAS = [
   videoJsonLd(),
   breadcrumbJsonLd(),
   itemListJsonLd(),
+  launchEventJsonLd(),
 ];
 
 export function JsonLdScripts() {

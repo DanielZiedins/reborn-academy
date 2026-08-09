@@ -41,7 +41,7 @@ export const ORGANIZATION = {
   legalName: "Reborn Academy",
   url: SITE_URL,
   logo: `${SITE_URL}/images/icon.png`,
-  image: `${SITE_URL}/images/phoenix.png`,
+  image: `${SITE_URL}/images/phoenix-rise.png`,
   email: "hello@thykingdom.net",
   parentOrganization: {
     name: "Thy Kingdom Network",
@@ -136,7 +136,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "how-to-join",
     question: "How do I join Reborn Academy?",
     answer:
-      "Reborn Academy is currently relaunching. Join the free waitlist at reborn-academy.com to be first notified when membership opens, including early access perks. Enter your email on the homepage waitlist form.",
+      "Reborn Academy officially re-launches November 1, 2026. Join the free waitlist at reborn-academy.com now to be first notified when membership opens — including early access to the dashboard, custom app, community, affiliate program, and launch giveaways.",
   },
   {
     id: "rb-insiders",
@@ -160,7 +160,13 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "cost",
     question: "How much does Reborn Academy cost?",
     answer:
-      "Pricing for the relaunched Reborn Academy membership will be announced at launch. The waitlist is free to join. Join at reborn-academy.com to receive launch details and early access information.",
+      "Pricing for the relaunched Reborn Academy membership will be announced before the November 1, 2026 launch. The waitlist is free to join at reborn-academy.com.",
+  },
+  {
+    id: "launch-date",
+    question: "When does Reborn Academy launch?",
+    answer:
+      "The official Reborn Academy re-launch is November 1, 2026. Join the waitlist to get first access to the member dashboard, custom app, community, affiliate program, and launch giveaways.",
   },
 ];
 

@@ -6,6 +6,7 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { FoundersSection } from "@/components/sections/founders-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { InsidersSection } from "@/components/sections/insiders-section";
+import { LaunchFeaturesSection } from "@/components/sections/launch-features-section";
 import { MembershipSection } from "@/components/sections/membership-section";
 import { ProblemSection } from "@/components/sections/problem-section";
 import { ProgramsSection } from "@/components/sections/programs-section";
@@ -24,10 +25,10 @@ export default function Home() {
     <>
       <SiteHeader />
       <main id="main-content">
-        {/* AEO: machine-readable entity summary for crawlers and answer engines */}
         <p className="sr-only" data-aeo="entity-summary">{AEO_DEFINITION}</p>
 
         <HeroSection />
+        <LaunchFeaturesSection />
         <ProblemSection />
         <RebornMomentSection />
         <SystemSection />
