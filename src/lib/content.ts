@@ -18,8 +18,9 @@ export const navLinks = [
   { href: "#programs", label: "Programs" },
   { href: "#academy", label: "Academy" },
   { href: "#community", label: "Community" },
+  { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
-  { href: "#founders", label: "About" },
+  { href: "#founders", label: "Founders" },
 ];
 
 export type Program = {

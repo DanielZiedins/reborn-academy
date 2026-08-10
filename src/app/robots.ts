@@ -44,6 +44,21 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: "Meta-ExternalAgent",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Bytespider",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

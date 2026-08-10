@@ -1,7 +1,13 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { FAQ_ITEMS } from "@/lib/seo";
 import { Reveal } from "@/components/ui/reveal";
 
 export function FaqSection() {
+  const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0]?.id ?? null);
+
   return (
     <section id="faq" className="section" aria-labelledby="faq-heading">
       <div className="page-width">
@@ -16,17 +22,39 @@ export function FaqSection() {
           </p>
         </Reveal>
 
-        <dl className="faq-list mt-14">
-          {FAQ_ITEMS.map((item, i) => (
-            <Reveal key={item.id} delay={i * 40}>
-              <div className="faq-item">
-                <dt id={`faq-${item.id}`} className="faq-question">
-                  {item.question}
-                </dt>
-                <dd className="faq-answer">{item.answer}</dd>
-              </div>
-            </Reveal>
-          ))}
+        <dl className="faq-accordion mt-14">
+          {FAQ_ITEMS.map((item, i) => {
+            const isOpen = openId === item.id;
+            return (
+              <Reveal key={item.id} delay={i * 30}>
+                <div className={`faq-accordion-item ${isOpen ? "faq-accordion-open" : ""}`}>
+                  <dt id={`faq-${item.id}`}>
+                    <button
+                      type="button"
+                      className="faq-accordion-trigger"
+                      onClick={() => setOpenId(isOpen ? null : item.id)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${item.id}`}
+                    >
+                      <span>{item.question}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`faq-accordion-icon ${isOpen ? "faq-accordion-icon-open" : ""}`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </dt>
+                  <dd
+                    id={`faq-answer-${item.id}`}
+                    className="faq-accordion-panel"
+                    hidden={!isOpen}
+                  >
+                    <p className="faq-answer">{item.answer}</p>
+                  </dd>
+                </div>
+              </Reveal>
+            );
+          })}
         </dl>
       </div>
     </section>

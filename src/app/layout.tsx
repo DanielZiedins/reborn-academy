@@ -47,8 +47,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
       <head>
         <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />
+        <link rel="alternate" type="text/plain" href="/ai.txt" title="AI site summary" />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <JsonLdScripts />
         {children}
       </body>

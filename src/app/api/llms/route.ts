@@ -1,4 +1,13 @@
-import { FAQ_ITEMS, ORGANIZATION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/seo";
+import {
+  AEO_BULLETS,
+  FAQ_ITEMS,
+  ORGANIZATION,
+  PROGRAM_PILLARS,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_URL,
+} from "@/lib/seo";
+import { LAUNCH_DATE_LABEL, launchFeatures } from "@/lib/launch";
 
 export async function GET() {
   const lines = [
@@ -9,21 +18,26 @@ export async function GET() {
     "## Canonical URL",
     SITE_URL,
     "",
+    "## Launch date",
+    LAUNCH_DATE_LABEL,
+    "",
     "## What is Reborn Academy?",
     FAQ_ITEMS.find((f) => f.id === "what-is-reborn-academy")?.answer ?? "",
     "",
     "## Founders",
     ...ORGANIZATION.founders.map((f) => `- ${f.name} (${f.role}): ${f.description}`),
     "",
+    "## Launch features",
+    ...launchFeatures.map((f) => `- ${f.title}: ${f.desc}`),
+    "",
     "## Topics & Programs",
-    "- Faith — Scripture, prayer, spiritual growth",
-    "- Fitness — training, nutrition, discipline",
-    "- Business — investing, crypto, marketing, e-commerce, social media, real estate",
-    "- Finances — budgeting, investing, generational wealth",
-    "- Family — marriage, parenting, legacy",
+    ...PROGRAM_PILLARS.map((p) => `- ${p.name} — ${p.description}`),
+    "",
+    "## Key facts",
+    ...AEO_BULLETS.map((b) => `- ${b}`),
     "",
     "## How to join",
-    `Reborn Academy is relaunching. Join the free waitlist at ${SITE_URL} (#waitlist).`,
+    `Join the free waitlist at ${SITE_URL}/#waitlist before the ${LAUNCH_DATE_LABEL} re-launch.`,
     "",
     "## Premium tier",
     "RB Insiders — premium membership with deeper access (details at launch).",
@@ -38,8 +52,9 @@ export async function GET() {
     "## FAQ",
     ...FAQ_ITEMS.map((f) => `### ${f.question}\n${f.answer}`),
     "",
-    "## Full documentation",
-    `${SITE_URL}/llms-full.txt`,
+    "## AI / machine-readable",
+    `- ai.txt: ${SITE_URL}/ai.txt`,
+    `- Full documentation: ${SITE_URL}/llms-full.txt`,
   ];
 
   return new Response(lines.join("\n"), {

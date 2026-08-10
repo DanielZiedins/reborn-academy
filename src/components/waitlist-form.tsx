@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { ConfettiBurst } from "@/components/ui/confetti-burst";
 
 type Props = {
   variant?: "hero" | "inline" | "footer";
@@ -13,6 +14,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const [name, setName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [showConfetti, setShowConfetti] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -41,7 +43,10 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
       }
 
       setStatus("success");
-      setMessage("You're on the list. Watch your inbox — we'll be first to tell you when we launch.");
+      setMessage(
+        "You're on the list. Watch your inbox — we'll be first to tell you when we launch November 1, 2026.",
+      );
+      setShowConfetti(true);
       setEmail("");
       setName("");
     } catch {
@@ -52,11 +57,22 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
 
   if (status === "success") {
     return (
-      <div className="flex items-start gap-3 rounded border border-[#2a4a2a] bg-[#0a1a0a] p-5">
-        <CheckCircle2 className="mt-0.5 shrink-0 text-[#4ade80]" size={22} />
-        <div>
-          <p className="text-sm font-bold uppercase tracking-wider text-[#4ade80]">You&apos;re on the waitlist</p>
-          <p className="mt-1 text-sm text-[#a8c4a8]">{message}</p>
+      <div className="waitlist-success-wrap">
+        <ConfettiBurst active={showConfetti} />
+        <div className="waitlist-success-card">
+          <div className="waitlist-success-icon">
+            <Sparkles size={20} aria-hidden="true" />
+          </div>
+          <CheckCircle2 className="shrink-0 text-[#4ade80]" size={28} aria-hidden="true" />
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wider text-[#4ade80]">
+              You&apos;re on the waitlist
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-[#a8c4a8]">{message}</p>
+            <p className="mt-3 text-xs text-[#6a8a6a]">
+              Check your email for confirmation. Share Reborn with a believer who needs this.
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -65,7 +81,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const showName = variant === "hero" || variant === "footer";
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form onSubmit={handleSubmit} className="w-full" noValidate>
       <div className={`flex flex-col gap-3 ${variant === "hero" ? "sm:flex-row" : ""}`}>
         {showName && (
           <input
@@ -86,6 +102,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label="Email address"
+          autoComplete="email"
         />
         <button
           type="submit"
@@ -93,16 +110,16 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           className="btn btn-red shrink-0 disabled:opacity-60"
         >
           {status === "loading" ? (
-            <Loader2 size={18} className="animate-spin" />
+            <Loader2 size={18} className="animate-spin" aria-label="Submitting" />
           ) : (
             <>
-              Enter The Academy <ArrowRight size={16} />
+              Enter The Academy <ArrowRight size={16} aria-hidden="true" />
             </>
           )}
         </button>
       </div>
       {status === "error" && (
-        <p className="mt-3 text-sm text-[#ff6b6b]">{message}</p>
+        <p className="mt-3 text-sm text-[#ff6b6b]" role="alert">{message}</p>
       )}
       {variant !== "inline" && status !== "error" && (
         <p className="mt-3 text-xs text-[#666]">

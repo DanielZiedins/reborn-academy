@@ -3,21 +3,25 @@ export const SITE_URL = "https://www.reborn-academy.com";
 
 export const SITE_NAME = "Reborn Academy";
 
+export const LAUNCH_DATE_ISO = "2026-11-01";
+
 export const SITE_TAGLINE =
-  "Faith-based transformation academy for ambitious believers — faith, fitness, business, finances, and family.";
+  "Faith-based transformation academy for ambitious believers — faith, fitness, business, finances, and family. Official re-launch November 1, 2026.";
 
 export const SITE_DESCRIPTION =
-  "Reborn Academy is a faith-based personal development and transformation academy for young, ambitious Christians. Learn faith, fitness, business, finances, and family with Mike Gagat and Daniel Ziedins. Join the waitlist for the Reborn relaunch.";
+  "Reborn Academy is a faith-based personal development academy and membership community for young, ambitious Christians. Get the member dashboard, custom app, live community, affiliate program, and launch giveaways — founded by Mike Gagat and Daniel Ziedins. Official re-launch November 1, 2026. Join the free waitlist.";
 
 export const SITE_KEYWORDS = [
   "Reborn Academy",
   "reborn academy waitlist",
+  "reborn academy launch",
+  "reborn academy November 2026",
   "faith-based personal development",
   "Christian personal growth community",
   "faith-based business training",
   "Christian fitness community",
   "Kingdom business",
-  "faith fitness finances",
+  "faith fitness finances family",
   "Christian entrepreneurship",
   "Mike Gagat",
   "Daniel Ziedins",
@@ -34,6 +38,15 @@ export const SITE_KEYWORDS = [
   "Christian real estate investing",
   "faith-based wealth",
   "Christian marketing training",
+  "Christian academy app",
+  "faith-based membership community",
+  "Christian affiliate program",
+  "Christian personal development academy",
+  "faith based alternative to self help",
+  "Christian life coaching community",
+  "biblical business training",
+  "Christian fitness and faith",
+  "Kingdom minded entrepreneurs",
 ];
 
 export const ORGANIZATION = {
@@ -82,8 +95,34 @@ export const ORGANIZATION = {
     "E-commerce",
     "Social media",
     "Real estate",
+    "Affiliate marketing",
+    "Mobile applications",
+    "Online education",
   ],
 };
+
+export const PROGRAM_PILLARS = [
+  {
+    name: "Faith",
+    description: "Scripture, prayer, spiritual warfare, and daily obedience rooted in Christ.",
+  },
+  {
+    name: "Fitness",
+    description: "Training, nutrition, and discipline — stewarding the body for God's mission.",
+  },
+  {
+    name: "Business",
+    description: "Kingdom business skills: investing, crypto, marketing, e-commerce, real estate.",
+  },
+  {
+    name: "Finances",
+    description: "Wealth stewardship, budgeting, investing, and generational impact.",
+  },
+  {
+    name: "Family",
+    description: "Marriage, parenting, and household leadership on biblical foundations.",
+  },
+];
 
 export const INTRO_VIDEO = {
   name: "Reborn Academy Intro — The Reborn Vision",
@@ -106,7 +145,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "what-is-reborn-academy",
     question: "What is Reborn Academy?",
     answer:
-      "Reborn Academy is a faith-based transformation academy and community for ambitious young Christians. It provides structured education, live community, and practical training across faith, fitness, business, finances, and family — designed to help believers build discipline, skills, and a new identity rooted in Christ.",
+      "Reborn Academy is a faith-based transformation academy and membership community for ambitious young Christians. It provides structured education, a custom member dashboard, mobile app, live community, affiliate program, and practical training across faith, fitness, business, finances, and family — designed to help believers build discipline, skills, and a new identity rooted in Christ.",
   },
   {
     id: "who-founded",
@@ -130,7 +169,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "who-is-it-for",
     question: "Who is Reborn Academy for?",
     answer:
-      "Reborn Academy is for young, ambitious Christians who refuse an ordinary life — believers who want direction, structure, accountability, and a community of people pursuing growth in every area of life with Christ at the center.",
+      "Reborn Academy is for young, ambitious Christians who refuse an ordinary life — believers who want direction, structure, accountability, and a community of like-minded people pursuing growth in every area of life with Christ at the center.",
   },
   {
     id: "how-to-join",
@@ -145,16 +184,28 @@ export const FAQ_ITEMS: FaqItem[] = [
       "RB Insiders is the premium tier of Reborn Academy offering deeper teachings, exclusive calls, and the highest level of community access. Full details will be revealed at launch; waitlist members receive first access.",
   },
   {
+    id: "dashboard-app",
+    question: "Does Reborn Academy have an app and dashboard?",
+    answer:
+      "Yes — launching November 1, 2026. Reborn Academy includes a custom member dashboard for courses, progress, challenges, and community, plus a dedicated Reborn mobile app so members can train, learn, and connect on the go.",
+  },
+  {
+    id: "affiliate",
+    question: "Does Reborn Academy have an affiliate program?",
+    answer:
+      "Yes. Reborn Academy is building an epic built-in affiliate program so members can share the mission and earn rewards. Details will be announced before the November 1, 2026 launch; waitlist members get first access.",
+  },
+  {
     id: "vs-other",
     question: "How is Reborn Academy different from other online communities?",
     answer:
-      "Reborn Academy combines premium academy-style education with a faith-first worldview. Unlike generic self-help or business courses, it offers an integrated environment — curriculum, live sessions, accountability, and community — across spiritual and practical life domains, built by practitioners who are actively doing the work.",
+      "Reborn Academy combines premium academy-style education with a faith-first worldview. Unlike generic self-help or business courses, it offers an integrated environment — dashboard, app, curriculum, live sessions, accountability, affiliate rewards, and community — across spiritual and practical life domains, built by practitioners who are actively doing the work.",
   },
   {
     id: "thy-kingdom",
     question: "What is Reborn Academy's connection to Thy Kingdom Network?",
     answer:
-      "Reborn Academy is part of the Thy Kingdom Network family of Kingdom initiatives founded and connected by Daniel Ziedins, alongside projects such as I AM REBORN, Jesus Festival, and other faith-based community and business ventures.",
+      "Reborn Academy is part of the Thy Kingdom Network family of Kingdom initiatives connected by Daniel Ziedins, alongside projects such as I AM REBORN, Jesus Festival, and other faith-based community and business ventures.",
   },
   {
     id: "cost",
@@ -166,9 +217,30 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "launch-date",
     question: "When does Reborn Academy launch?",
     answer:
-      "The official Reborn Academy re-launch is November 1, 2026. Join the waitlist to get first access to the member dashboard, custom app, community, affiliate program, and launch giveaways.",
+      "The official Reborn Academy re-launch is November 1, 2026. Join the waitlist at reborn-academy.com to get first access to the member dashboard, custom app, community, affiliate program, and launch giveaways.",
+  },
+  {
+    id: "giveaways",
+    question: "Will Reborn Academy have giveaways at launch?",
+    answer:
+      "Yes. Reborn Academy is planning launch giveaways and member rewards for the November 1, 2026 re-launch. Join the waitlist to be eligible for early access perks and launch announcements.",
   },
 ];
 
-export const AEO_DEFINITION =
-  "Reborn Academy (reborn-academy.com) is a faith-based transformation academy and membership community for ambitious young Christians, covering faith, fitness, business, finances, and family. Founded by Mike Gagat and Daniel Ziedins as part of Thy Kingdom Network. Currently accepting waitlist signups for the Reborn relaunch.";
+/** Quotable summary for speakable schema + AEO crawlers */
+export const AEO_SUMMARY_PARAGRAPH =
+  "Reborn Academy is a faith-based transformation academy and membership community at reborn-academy.com for ambitious young Christians. Founded by Mike Gagat and Daniel Ziedins, it covers faith, fitness, business, finances, and family through a custom dashboard, mobile app, live community, affiliate program, and launch giveaways. The official re-launch is November 1, 2026. Join the free waitlist for first access.";
+
+export const AEO_DEFINITION = AEO_SUMMARY_PARAGRAPH;
+
+export const AEO_BULLETS = [
+  "Faith-based academy for ambitious young Christians",
+  "Five pillars: Faith, Fitness, Business, Finances, Family",
+  "Custom member dashboard and Reborn mobile app",
+  "Live community, strategy calls, and RB Insiders premium tier",
+  "Built-in affiliate program and launch giveaways",
+  "Founded by Mike Gagat and Daniel Ziedins",
+  "Part of Thy Kingdom Network",
+  "Official re-launch: November 1, 2026",
+  "Free waitlist at reborn-academy.com",
+];

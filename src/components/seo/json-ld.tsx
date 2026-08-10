@@ -1,22 +1,28 @@
 import {
+  AEO_SUMMARY_PARAGRAPH,
   FAQ_ITEMS,
   INTRO_VIDEO,
   ORGANIZATION,
+  PROGRAM_PILLARS,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TAGLINE,
   SITE_URL,
 } from "@/lib/seo";
+import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 
-type JsonLd = Record<string, unknown>;
+type Node = Record<string, unknown>;
 
-function orgJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+function buildGraph(): Node[] {
+  const orgId = `${SITE_URL}/#organization`;
+  const websiteId = `${SITE_URL}/#website`;
+  const webpageId = `${SITE_URL}/#webpage`;
+
+  const organization: Node = {
     "@type": "EducationalOrganization",
-    "@id": `${SITE_URL}/#organization`,
+    "@id": orgId,
     name: ORGANIZATION.name,
-    alternateName: ["Reborn Academy", "RB Academy"],
+    alternateName: ["Reborn Academy", "RB Academy", "Reborn Academy Christian"],
     url: ORGANIZATION.url,
     logo: {
       "@type": "ImageObject",
@@ -43,42 +49,37 @@ function orgJsonLd(): JsonLd {
     })),
     sameAs: ORGANIZATION.sameAs,
   };
-}
 
-function websiteJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const website: Node = {
     "@type": "WebSite",
-    "@id": `${SITE_URL}/#website`,
+    "@id": websiteId,
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_TAGLINE,
-    publisher: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": orgId },
     inLanguage: "en-US",
   };
-}
 
-function webpageJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const webpage: Node = {
     "@type": "WebPage",
-    "@id": `${SITE_URL}/#webpage`,
+    "@id": webpageId,
     url: SITE_URL,
     name: `${SITE_NAME} — Faith-Based Transformation Academy`,
     description: SITE_DESCRIPTION,
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-    about: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": websiteId },
+    about: { "@id": orgId },
     inLanguage: "en-US",
     primaryImageOfPage: {
       "@type": "ImageObject",
       url: ORGANIZATION.image,
     },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".aeo-summary-text", ".aeo-summary-lead"],
+    },
   };
-}
 
-function faqJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const faqPage: Node = {
     "@type": "FAQPage",
     "@id": `${SITE_URL}/#faq`,
     mainEntity: FAQ_ITEMS.map((item) => ({
@@ -90,11 +91,8 @@ function faqJsonLd(): JsonLd {
       },
     })),
   };
-}
 
-function videoJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const video: Node = {
     "@type": "VideoObject",
     "@id": `${SITE_URL}/#intro-video`,
     name: INTRO_VIDEO.name,
@@ -103,13 +101,10 @@ function videoJsonLd(): JsonLd {
     embedUrl: INTRO_VIDEO.embedUrl,
     contentUrl: INTRO_VIDEO.watchUrl,
     uploadDate: INTRO_VIDEO.uploadDate,
-    publisher: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": orgId },
   };
-}
 
-function breadcrumbJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const breadcrumbs: Node = {
     "@type": "BreadcrumbList",
     itemListElement: [
       {
@@ -120,65 +115,158 @@ function breadcrumbJsonLd(): JsonLd {
       },
     ],
   };
-}
 
-function itemListJsonLd(): JsonLd {
-  const pillars = ["Faith", "Fitness", "Business", "Finances", "Family"];
-  return {
-    "@context": "https://schema.org",
+  const programs: Node = {
     "@type": "ItemList",
     "@id": `${SITE_URL}/#programs`,
     name: "Reborn Academy Programs",
-    description: "Core transformation pillars taught at Reborn Academy.",
-    numberOfItems: pillars.length,
-    itemListElement: pillars.map((name, i) => ({
+    description: "Core transformation pillars at Reborn Academy.",
+    numberOfItems: PROGRAM_PILLARS.length,
+    itemListElement: PROGRAM_PILLARS.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name,
-      url: `${SITE_URL}/#programs`,
+      item: {
+        "@type": "Course",
+        name: `${p.name} — Reborn Academy`,
+        description: p.description,
+        provider: { "@id": orgId },
+        url: `${SITE_URL}/#programs`,
+        educationalLevel: "Beginner to Advanced",
+        inLanguage: "en-US",
+        isAccessibleForFree: false,
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          url: `${SITE_URL}/#waitlist`,
+        },
+      },
     })),
   };
-}
 
-function launchEventJsonLd(): JsonLd {
-  return {
-    "@context": "https://schema.org",
+  const launchEvent: Node = {
     "@type": "Event",
+    "@id": `${SITE_URL}/#launch-event`,
     name: "Reborn Academy Official Re-Launch",
-    description: "Official re-launch of Reborn Academy — faith-based transformation academy with dashboard, app, and community.",
+    description:
+      "Official re-launch of Reborn Academy with member dashboard, custom app, community, affiliate program, and giveaways.",
     startDate: "2026-11-01T00:00:00-04:00",
+    endDate: "2026-11-01T23:59:59-04:00",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
     location: {
       "@type": "VirtualLocation",
       url: SITE_URL,
     },
-    organizer: { "@id": `${SITE_URL}/#organization` },
+    organizer: { "@id": orgId },
     image: ORGANIZATION.image,
+    offers: {
+      "@type": "Offer",
+      url: `${SITE_URL}/#waitlist`,
+      availability: "https://schema.org/PreOrder",
+      price: "0",
+      priceCurrency: "USD",
+      description: "Free waitlist for early access",
+    },
   };
+
+  const mobileApp: Node = {
+    "@type": "MobileApplication",
+    "@id": `${SITE_URL}/#reborn-app`,
+    name: "Reborn Academy App",
+    description: "Custom mobile app for Reborn Academy members — courses, community, and progress on the go.",
+    applicationCategory: "EducationalApplication",
+    operatingSystem: "iOS, Android",
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/PreOrder",
+      url: `${SITE_URL}/#waitlist`,
+    },
+    publisher: { "@id": orgId },
+  };
+
+  const webApp: Node = {
+    "@type": "WebApplication",
+    "@id": `${SITE_URL}/#member-dashboard`,
+    name: "Reborn Academy Member Dashboard",
+    description: "Member dashboard for courses, progress tracking, challenges, affiliate tools, and community.",
+    applicationCategory: "EducationalApplication",
+    browserRequirements: "Requires JavaScript",
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/PreOrder",
+      url: `${SITE_URL}/#waitlist`,
+    },
+    provider: { "@id": orgId },
+  };
+
+  const howToJoin: Node = {
+    "@type": "HowTo",
+    "@id": `${SITE_URL}/#how-to-join`,
+    name: "How to join the Reborn Academy waitlist",
+    description: `Join the free waitlist before the ${LAUNCH_DATE_LABEL} re-launch.`,
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Visit reborn-academy.com",
+        text: "Go to https://www.reborn-academy.com",
+        url: SITE_URL,
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Enter your details",
+        text: "Enter your name and email address in the waitlist form.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Confirm your spot",
+        text: "Submit the form. You'll receive a welcome email and launch updates before November 1, 2026.",
+      },
+    ],
+  };
+
+  const nav: Node = {
+    "@type": "SiteNavigationElement",
+    "@id": `${SITE_URL}/#navigation`,
+    name: "Main Navigation",
+    url: SITE_URL,
+    hasPart: [
+      { "@type": "SiteNavigationElement", name: "Launch", url: `${SITE_URL}/#launch` },
+      { "@type": "SiteNavigationElement", name: "Programs", url: `${SITE_URL}/#programs` },
+      { "@type": "SiteNavigationElement", name: "Academy", url: `${SITE_URL}/#academy` },
+      { "@type": "SiteNavigationElement", name: "FAQ", url: `${SITE_URL}/#faq` },
+      { "@type": "SiteNavigationElement", name: "Waitlist", url: `${SITE_URL}/#waitlist` },
+    ],
+  };
+
+  return [
+    organization,
+    website,
+    webpage,
+    faqPage,
+    video,
+    breadcrumbs,
+    programs,
+    launchEvent,
+    mobileApp,
+    webApp,
+    howToJoin,
+    nav,
+  ];
 }
 
-const SCHEMAS = [
-  orgJsonLd(),
-  websiteJsonLd(),
-  webpageJsonLd(),
-  faqJsonLd(),
-  videoJsonLd(),
-  breadcrumbJsonLd(),
-  itemListJsonLd(),
-  launchEventJsonLd(),
-];
-
 export function JsonLdScripts() {
+  const payload = {
+    "@context": "https://schema.org",
+    "@graph": buildGraph(),
+  };
+
   return (
-    <>
-      {SCHEMAS.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
+    />
   );
 }
