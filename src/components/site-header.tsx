@@ -10,12 +10,35 @@ import { LaunchCountdown } from "@/components/ui/launch-countdown";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.replace("#", ""));
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) setActive(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -41,9 +64,13 @@ export function SiteHeader() {
           <LaunchCountdown variant="compact" />
         </div>
 
-        <nav className="hidden items-center gap-7 lg:flex shrink-0">
+        <nav className="hidden items-center gap-6 xl:gap-7 lg:flex shrink-0" aria-label="Primary">
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="nav-link">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`nav-link ${active === l.href ? "nav-link-active" : ""}`}
+            >
               {l.label}
             </Link>
           ))}
@@ -74,7 +101,7 @@ export function SiteHeader() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="mobile-nav-link"
+                className={`mobile-nav-link ${active === l.href ? "text-white" : ""}`}
                 onClick={() => setOpen(false)}
               >
                 {l.label}

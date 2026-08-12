@@ -17,10 +17,10 @@ export const navLinks = [
   { href: "#launch", label: "Launch" },
   { href: "#programs", label: "Programs" },
   { href: "#academy", label: "Academy" },
+  { href: "#giveaways", label: "Rewards" },
   { href: "#community", label: "Community" },
-  { href: "#about", label: "About" },
-  { href: "#faq", label: "FAQ" },
   { href: "#founders", label: "Founders" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export type Program = {

@@ -1,5 +1,6 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LaunchCountdown } from "@/components/ui/launch-countdown";
+import { WaitlistCounter } from "@/components/ui/waitlist-counter";
 import { FadeInUp } from "@/components/ui/motion";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 
@@ -20,6 +21,10 @@ export function WaitlistSection() {
               launch giveaways.
             </p>
           </div>
+        </FadeInUp>
+
+        <FadeInUp delay={0.08} className="mt-8 flex justify-center">
+          <WaitlistCounter />
         </FadeInUp>
 
         <FadeInUp delay={0.1} className="mx-auto mt-10 max-w-lg">

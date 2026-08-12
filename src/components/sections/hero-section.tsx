@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { CtaButton } from "@/components/ui/cta-button";
 import { LaunchCountdown } from "@/components/ui/launch-countdown";
+import { WaitlistCounter } from "@/components/ui/waitlist-counter";
 import { FloatingOrb, ParallaxLayer } from "@/components/ui/motion";
 
 export function HeroSection() {
@@ -74,7 +75,16 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="mt-8"
+            className="mt-6 flex justify-center lg:justify-start"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <WaitlistCounter />
+          </motion.div>
+
+          <motion.div
+            className="mt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}

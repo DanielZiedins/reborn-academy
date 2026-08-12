@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, Sparkles, Share2, Copy, Check } from "lucide-react";
 import { ConfettiBurst } from "@/components/ui/confetti-burst";
+import { SITE_URL } from "@/lib/seo";
 
 type Props = {
   variant?: "hero" | "inline" | "footer";
@@ -15,6 +16,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [showConfetti, setShowConfetti] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -55,7 +57,22 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     }
   }
 
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(SITE_URL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* ignore */
+    }
+  }
+
   if (status === "success") {
+    const shareText = encodeURIComponent(
+      "I just joined the Reborn Academy waitlist — faith-based academy re-launching November 1, 2026. Join me:",
+    );
+    const shareUrl = encodeURIComponent(SITE_URL);
+
     return (
       <div className="waitlist-success-wrap">
         <ConfettiBurst active={showConfetti} />
@@ -64,7 +81,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
             <Sparkles size={20} aria-hidden="true" />
           </div>
           <CheckCircle2 className="shrink-0 text-[#4ade80]" size={28} aria-hidden="true" />
-          <div>
+          <div className="flex-1">
             <p className="text-sm font-bold uppercase tracking-wider text-[#4ade80]">
               You&apos;re on the waitlist
             </p>
@@ -72,6 +89,20 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
             <p className="mt-3 text-xs text-[#6a8a6a]">
               Check your email for confirmation. Share Reborn with a believer who needs this.
             </p>
+            <div className="waitlist-share mt-4">
+              <a
+                href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="waitlist-share-btn"
+              >
+                <Share2 size={14} aria-hidden="true" /> Share
+              </a>
+              <button type="button" className="waitlist-share-btn" onClick={copyLink}>
+                {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+                {copied ? "Copied" : "Copy link"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
