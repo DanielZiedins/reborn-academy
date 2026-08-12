@@ -214,6 +214,12 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Pricing for the relaunched Reborn Academy membership will be announced before the November 1, 2026 launch. The waitlist is free to join at reborn-academy.com.",
   },
   {
+    id: "values",
+    question: "What are Reborn Academy's core values?",
+    answer:
+      "Reborn Academy is built on non-negotiables: Christ at the center, excellence without apology, community over isolation, practice over theory, integrity in the marketplace, and identity renewal. Every pillar — faith, fitness, business, finances, and family — is filtered through Scripture.",
+  },
+  {
     id: "launch-date",
     question: "When does Reborn Academy launch?",
     answer:

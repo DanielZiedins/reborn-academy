@@ -66,10 +66,12 @@ export function LaunchCountdown({ variant = "hero" }: Props) {
       {time.launched ? (
         <p className="display countdown-launched text-4xl text-[#cc1111]">The academy is opening</p>
       ) : (
-        <div className="countdown-grid">
+      <div className="countdown-grid">
           {units.map((u) => (
             <div key={u.label} className="countdown-cell">
-              <span className="countdown-value">{String(u.value).padStart(2, "0")}</span>
+              <span key={`${u.label}-${u.value}`} className="countdown-value countdown-tick">
+                {String(u.value).padStart(2, "0")}
+              </span>
               <span className="countdown-label">{u.label}</span>
             </div>
           ))}

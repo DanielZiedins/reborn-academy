@@ -72,6 +72,8 @@ export function SiteFooter() {
           <span aria-hidden="true">·</span>
           <Link href="/ai.txt" className="hover:text-[#888]">ai.txt</Link>
           <span aria-hidden="true">·</span>
+          <Link href="/humans.txt" className="hover:text-[#888]">humans.txt</Link>
+          <span aria-hidden="true">·</span>
           <Link href="/sitemap.xml" className="hover:text-[#888]">Sitemap</Link>
         </div>
 

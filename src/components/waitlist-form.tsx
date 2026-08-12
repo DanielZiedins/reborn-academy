@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2, Sparkles, Share2, Copy, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, CheckCircle2, Loader2, Sparkles, Share2, Copy, Check, BadgeCheck } from "lucide-react";
 import { ConfettiBurst } from "@/components/ui/confetti-burst";
 import { SITE_URL } from "@/lib/seo";
 
@@ -10,6 +10,18 @@ type Props = {
   source?: string;
 };
 
+function resolveSource(fallback: string) {
+  if (typeof window === "undefined") return fallback;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref") || params.get("utm_source") || params.get("source");
+    if (ref) return `ref:${ref.slice(0, 60)}`;
+  } catch {
+    /* ignore */
+  }
+  return fallback;
+}
+
 export function WaitlistForm({ variant = "inline", source = "reborn-academy.com" }: Props) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -17,6 +29,11 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const [message, setMessage] = useState("");
   const [showConfetti, setShowConfetti] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [resolvedSource, setResolvedSource] = useState(source);
+
+  useEffect(() => {
+    setResolvedSource(resolveSource(source));
+  }, [source]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -32,7 +49,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
         body: JSON.stringify({
           email: email.trim(),
           full_name: name.trim() || undefined,
-          source,
+          source: resolvedSource,
         }),
       });
 
@@ -82,7 +99,11 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           </div>
           <CheckCircle2 className="shrink-0 text-[#4ade80]" size={28} aria-hidden="true" />
           <div className="flex-1">
-            <p className="text-sm font-bold uppercase tracking-wider text-[#4ade80]">
+            <div className="founding-badge">
+              <BadgeCheck size={14} aria-hidden="true" />
+              Founding waitlist member
+            </div>
+            <p className="mt-3 text-sm font-bold uppercase tracking-wider text-[#4ade80]">
               You&apos;re on the waitlist
             </p>
             <p className="mt-2 text-sm leading-relaxed text-[#a8c4a8]">{message}</p>
@@ -150,7 +171,9 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
         </button>
       </div>
       {status === "error" && (
-        <p className="mt-3 text-sm text-[#ff6b6b]" role="alert">{message}</p>
+        <p className="mt-3 text-sm text-[#ff6b6b]" role="alert">
+          {message}
+        </p>
       )}
       {variant !== "inline" && status !== "error" && (
         <p className="mt-3 text-xs text-[#666]">
