@@ -1,6 +1,8 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LaunchCountdown } from "@/components/ui/launch-countdown";
 import { WaitlistCounter } from "@/components/ui/waitlist-counter";
+import { AddToCalendar } from "@/components/ui/add-to-calendar";
+import { FoundingMeter } from "@/components/ui/founding-meter";
 import { FadeInUp } from "@/components/ui/motion";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 
@@ -27,12 +29,20 @@ export function WaitlistSection() {
           <WaitlistCounter />
         </FadeInUp>
 
-        <FadeInUp delay={0.1} className="mx-auto mt-10 max-w-lg">
+        <FadeInUp delay={0.1} className="mx-auto mt-8 max-w-md">
+          <FoundingMeter />
+        </FadeInUp>
+
+        <FadeInUp delay={0.12} className="mx-auto mt-10 max-w-lg">
           <LaunchCountdown />
         </FadeInUp>
 
-        <FadeInUp delay={0.2} className="mx-auto mt-10 max-w-xl">
+        <FadeInUp delay={0.18} className="mx-auto mt-10 max-w-xl">
           <WaitlistForm variant="footer" />
+        </FadeInUp>
+
+        <FadeInUp delay={0.22} className="mx-auto mt-10 max-w-xl">
+          <AddToCalendar />
         </FadeInUp>
 
         <p className="mt-8 text-center text-xs text-[#555]">

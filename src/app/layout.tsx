@@ -8,6 +8,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const bebas = Bebas_Neue({
@@ -15,6 +16,7 @@ const bebas = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-bebas",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -36,6 +38,9 @@ export const metadata: Metadata = {
     apple: "/images/icon.png",
   },
   manifest: "/manifest.webmanifest",
+  other: {
+    "theme-color": "#050505",
+  },
 };
 
 export default function RootLayout({
@@ -46,11 +51,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
       <head>
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://vmpkiwfvnlzraabtjkig.supabase.co" />
         <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI site summary" />
+        <link rel="preload" as="image" href="/images/phoenix-rise.png" fetchPriority="high" />
       </head>
       <body>
-        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <JsonLdScripts />
         {children}
       </body>

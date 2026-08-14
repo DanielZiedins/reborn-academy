@@ -43,6 +43,9 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     setMessage("");
 
     try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,7 +54,9 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           full_name: name.trim() || undefined,
           source: resolvedSource,
         }),
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
 
       const data = await res.json();
 
@@ -68,9 +73,13 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
       setShowConfetti(true);
       setEmail("");
       setName("");
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setMessage("Network error. Please try again.");
+      setMessage(
+        err instanceof Error && err.name === "AbortError"
+          ? "Request timed out. Please try again."
+          : "Network error. Please try again.",
+      );
     }
   }
 

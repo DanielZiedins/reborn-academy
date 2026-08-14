@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { DeferredChrome } from "@/components/deferred-chrome";
 import { AcademyPreviewSection } from "@/components/sections/academy-preview-section";
 import { AeoSummarySection } from "@/components/sections/aeo-summary-section";
 import { AffiliateSection } from "@/components/sections/affiliate-section";
@@ -27,12 +28,8 @@ import { ValuesSection } from "@/components/sections/values-section";
 import { VideoSection } from "@/components/sections/video-section";
 import { VisionQuotesSection } from "@/components/sections/vision-quotes-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
-import { BackToTop } from "@/components/ui/back-to-top";
-import { CursorGlow } from "@/components/ui/cursor-glow";
-import { LaunchToast } from "@/components/ui/launch-toast";
-import { MobileStickyCta } from "@/components/ui/mobile-sticky-cta";
+import { PageReveal } from "@/components/ui/page-reveal";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { SectionNav } from "@/components/ui/section-nav";
 import { AEO_DEFINITION } from "@/lib/seo";
 import { homeMetadata } from "@/lib/metadata";
 
@@ -41,10 +38,9 @@ export const metadata = homeMetadata;
 export default function Home() {
   return (
     <>
+      <PageReveal />
       <ScrollProgress />
-      <CursorGlow />
       <SiteHeader />
-      <SectionNav />
       <main id="main-content">
         <p className="sr-only" data-aeo="entity-summary">
           {AEO_DEFINITION}
@@ -79,9 +75,7 @@ export default function Home() {
         <WaitlistSection />
       </main>
       <SiteFooter />
-      <MobileStickyCta />
-      <BackToTop />
-      <LaunchToast />
+      <DeferredChrome />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 
 type Props = {
   children: ReactNode;
@@ -9,14 +9,34 @@ type Props = {
   strength?: number;
 };
 
+function useIsCoarsePointer() {
+  const [coarse, setCoarse] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const update = () => setCoarse(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return coarse;
+}
+
 export function ParallaxLayer({ children, className = "", strength = 80 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const coarse = useIsCoarsePointer();
+  const disabled = Boolean(reduced) || coarse;
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, strength]);
-  const smoothY = useSpring(y, { stiffness: 100, damping: 30, mass: 0.5 });
+  const y = useTransform(scrollYProgress, [0, 1], [0, disabled ? 0 : strength]);
+  const smoothY = useSpring(y, { stiffness: 120, damping: 32, mass: 0.4 });
+
+  if (disabled) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <div ref={ref} className={className}>
@@ -34,13 +54,19 @@ export function FadeInUp({
   className?: string;
   delay?: number;
 }) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -48,14 +74,21 @@ export function FadeInUp({
 }
 
 export function FloatingOrb({ className = "" }: { className?: string }) {
+  const reduced = useReducedMotion();
+  const coarse = useIsCoarsePointer();
+
+  if (reduced || coarse) {
+    return <div className={`floating-orb ${className}`} style={{ opacity: 0.35 }} />;
+  }
+
   return (
     <motion.div
       className={`floating-orb ${className}`}
       animate={{
-        y: [0, -18, 0],
-        opacity: [0.4, 0.7, 0.4],
+        y: [0, -14, 0],
+        opacity: [0.35, 0.55, 0.35],
       }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
     />
   );
 }

@@ -1,20 +1,26 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CtaButton } from "@/components/ui/cta-button";
 import { LaunchCountdown } from "@/components/ui/launch-countdown";
 import { WaitlistCounter } from "@/components/ui/waitlist-counter";
+import { AddToCalendar } from "@/components/ui/add-to-calendar";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 
 export function FinalCtaSection() {
   const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.5]);
+  const y = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [40, -40]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    reduced ? [1, 1, 1, 1] : [0.4, 1, 1, 0.5],
+  );
 
   return (
     <section ref={ref} className="final-cta-section" aria-labelledby="final-cta-heading">
@@ -41,11 +47,12 @@ export function FinalCtaSection() {
           <LaunchCountdown />
         </div>
 
-        <div className="mt-8 flex flex-col items-center gap-4">
+        <div className="mt-8 flex flex-col items-center gap-5">
           <WaitlistCounter />
           <CtaButton href="#waitlist" className="group">
             Lock in your waitlist spot
           </CtaButton>
+          <AddToCalendar compact />
         </div>
       </div>
     </section>
