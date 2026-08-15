@@ -73,7 +73,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000);
-      const invite = `${SITE_URL}/?ref=${encodeURIComponent(referralSlug(name, email))}`;
+      const invite = `${SITE_URL}/waitlist?ref=${encodeURIComponent(referralSlug(name, email))}`;
 
       const res = await fetch("/api/waitlist", {
         method: "POST",

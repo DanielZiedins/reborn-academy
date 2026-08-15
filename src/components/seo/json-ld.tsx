@@ -1,6 +1,5 @@
 import {
   AEO_SUMMARY_PARAGRAPH,
-  FAQ_ITEMS,
   INTRO_VIDEO,
   ORGANIZATION,
   PROGRAM_PILLARS,
@@ -10,6 +9,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
+import { SITE_PAGES } from "@/lib/pages";
 
 type Node = Record<string, unknown>;
 
@@ -58,6 +58,11 @@ function buildGraph(): Node[] {
     description: SITE_TAGLINE,
     publisher: { "@id": orgId },
     inLanguage: "en-US",
+    hasPart: SITE_PAGES.filter((p) => p.href !== "/").map((p) => ({
+      "@type": "WebPage",
+      name: p.label,
+      url: `${SITE_URL}${p.href}`,
+    })),
   };
 
   const webpage: Node = {
@@ -77,19 +82,24 @@ function buildGraph(): Node[] {
       "@type": "SpeakableSpecification",
       cssSelector: [".aeo-summary-text", ".aeo-summary-lead"],
     },
+    significantLink: [
+      `${SITE_URL}/waitlist`,
+      `${SITE_URL}/what-is-reborn-academy`,
+      `${SITE_URL}/faq`,
+      `${SITE_URL}/launch`,
+    ],
   };
 
-  const faqPage: Node = {
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}/#faq`,
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
+  const definedTerm: Node = {
+    "@type": "DefinedTerm",
+    "@id": `${SITE_URL}/what-is-reborn-academy#term`,
+    name: "Reborn Academy",
+    description: AEO_SUMMARY_PARAGRAPH,
+    url: `${SITE_URL}/what-is-reborn-academy`,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: "Reborn Academy glossary",
+    },
   };
 
   const video: Node = {
@@ -118,7 +128,7 @@ function buildGraph(): Node[] {
 
   const programs: Node = {
     "@type": "ItemList",
-    "@id": `${SITE_URL}/#programs`,
+    "@id": `${SITE_URL}/programs#list`,
     name: "Reborn Academy Programs",
     description: "Core transformation pillars at Reborn Academy.",
     numberOfItems: PROGRAM_PILLARS.length,
@@ -130,14 +140,14 @@ function buildGraph(): Node[] {
         name: `${p.name} — Reborn Academy`,
         description: p.description,
         provider: { "@id": orgId },
-        url: `${SITE_URL}/#programs`,
+        url: `${SITE_URL}/programs`,
         educationalLevel: "Beginner to Advanced",
         inLanguage: "en-US",
         isAccessibleForFree: false,
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/PreOrder",
-          url: `${SITE_URL}/#waitlist`,
+          url: `${SITE_URL}/waitlist`,
         },
       },
     })),
@@ -145,7 +155,7 @@ function buildGraph(): Node[] {
 
   const launchEvent: Node = {
     "@type": "Event",
-    "@id": `${SITE_URL}/#launch-event`,
+    "@id": `${SITE_URL}/launch#event`,
     name: "Reborn Academy Official Re-Launch",
     description:
       "Official re-launch of Reborn Academy with member dashboard, custom app, community, affiliate program, and giveaways.",
@@ -161,7 +171,7 @@ function buildGraph(): Node[] {
     image: ORGANIZATION.image,
     offers: {
       "@type": "Offer",
-      url: `${SITE_URL}/#waitlist`,
+      url: `${SITE_URL}/waitlist`,
       availability: "https://schema.org/PreOrder",
       price: "0",
       priceCurrency: "USD",
@@ -179,7 +189,7 @@ function buildGraph(): Node[] {
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/PreOrder",
-      url: `${SITE_URL}/#waitlist`,
+      url: `${SITE_URL}/waitlist`,
     },
     publisher: { "@id": orgId },
   };
@@ -194,7 +204,7 @@ function buildGraph(): Node[] {
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/PreOrder",
-      url: `${SITE_URL}/#waitlist`,
+      url: `${SITE_URL}/waitlist`,
     },
     provider: { "@id": orgId },
   };
@@ -208,9 +218,9 @@ function buildGraph(): Node[] {
       {
         "@type": "HowToStep",
         position: 1,
-        name: "Visit reborn-academy.com",
-        text: "Go to https://www.reborn-academy.com",
-        url: SITE_URL,
+        name: "Visit the waitlist",
+        text: "Go to https://www.reborn-academy.com/waitlist",
+        url: `${SITE_URL}/waitlist`,
       },
       {
         "@type": "HowToStep",
@@ -233,11 +243,12 @@ function buildGraph(): Node[] {
     name: "Main Navigation",
     url: SITE_URL,
     hasPart: [
-      { "@type": "SiteNavigationElement", name: "Launch", url: `${SITE_URL}/#launch` },
-      { "@type": "SiteNavigationElement", name: "Programs", url: `${SITE_URL}/#programs` },
-      { "@type": "SiteNavigationElement", name: "Academy", url: `${SITE_URL}/#academy` },
-      { "@type": "SiteNavigationElement", name: "FAQ", url: `${SITE_URL}/#faq` },
-      { "@type": "SiteNavigationElement", name: "Waitlist", url: `${SITE_URL}/#waitlist` },
+      { "@type": "SiteNavigationElement", name: "Launch", url: `${SITE_URL}/launch` },
+      { "@type": "SiteNavigationElement", name: "Programs", url: `${SITE_URL}/programs` },
+      { "@type": "SiteNavigationElement", name: "What is Reborn Academy", url: `${SITE_URL}/what-is-reborn-academy` },
+      { "@type": "SiteNavigationElement", name: "About", url: `${SITE_URL}/about` },
+      { "@type": "SiteNavigationElement", name: "FAQ", url: `${SITE_URL}/faq` },
+      { "@type": "SiteNavigationElement", name: "Waitlist", url: `${SITE_URL}/waitlist` },
     ],
   };
 
@@ -245,7 +256,7 @@ function buildGraph(): Node[] {
     organization,
     website,
     webpage,
-    faqPage,
+    definedTerm,
     video,
     breadcrumbs,
     programs,

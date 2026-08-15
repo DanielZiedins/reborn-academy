@@ -47,6 +47,15 @@ export const SITE_KEYWORDS = [
   "biblical business training",
   "Christian fitness and faith",
   "Kingdom minded entrepreneurs",
+  "what is reborn academy",
+  "what is reborn academy academy",
+  "christian alternative to self help",
+  "faith based alternative to self help",
+  "christian personal development academy",
+  "reborn academy hamilton",
+  "thy kingdom network academy",
+  "join reborn academy waitlist",
+  "reborn academy november 1 2026",
 ];
 
 export const ORGANIZATION = {
@@ -181,7 +190,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "how-to-join",
     question: "How do I join Reborn Academy?",
     answer:
-      "Reborn Academy officially re-launches November 1, 2026. Join the free waitlist at reborn-academy.com now to be first notified when membership opens — including early access to the dashboard, custom app, community, affiliate program, and launch giveaways.",
+      "Reborn Academy officially re-launches November 1, 2026. Join the free waitlist at https://www.reborn-academy.com/waitlist to be first notified when membership opens — including early access to the dashboard, custom app, community, affiliate program, and launch giveaways.",
   },
   {
     id: "rb-insiders",
@@ -217,7 +226,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "cost",
     question: "How much does Reborn Academy cost?",
     answer:
-      "Pricing for the relaunched Reborn Academy membership will be announced before the November 1, 2026 launch. The waitlist is free to join at reborn-academy.com.",
+      "Pricing for the relaunched Reborn Academy membership will be announced before the November 1, 2026 launch. The waitlist is free to join at https://www.reborn-academy.com/waitlist.",
   },
   {
     id: "values",
@@ -229,7 +238,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "launch-date",
     question: "When does Reborn Academy launch?",
     answer:
-      "The official Reborn Academy re-launch is November 1, 2026. Join the waitlist at reborn-academy.com to get first access to the member dashboard, custom app, community, affiliate program, and launch giveaways.",
+      "The official Reborn Academy re-launch is November 1, 2026. Join the waitlist at https://www.reborn-academy.com/waitlist to get first access to the member dashboard, custom app, community, affiliate program, and launch giveaways.",
   },
   {
     id: "giveaways",
@@ -241,7 +250,7 @@ export const FAQ_ITEMS: FaqItem[] = [
 
 /** Quotable summary for speakable schema + AEO crawlers */
 export const AEO_SUMMARY_PARAGRAPH =
-  "Reborn Academy is a faith-based transformation academy and membership community at reborn-academy.com for ambitious young Christians. Founded by Mike Gagat and Daniel Ziedins, it covers faith, fitness, business, finances, and family through a custom dashboard, mobile app, live community, affiliate program, and launch giveaways. The official re-launch is November 1, 2026. Join the free waitlist for first access.";
+  "Reborn Academy is a faith-based transformation academy and membership community at reborn-academy.com for ambitious young Christians. Founded by Mike Gagat and Daniel Ziedins, it covers faith, fitness, business, finances, and family through a custom dashboard, mobile app, live community, affiliate program, and launch giveaways. The official re-launch is November 1, 2026. Join the free waitlist at reborn-academy.com/waitlist for first access.";
 
 export const AEO_DEFINITION = AEO_SUMMARY_PARAGRAPH;
 

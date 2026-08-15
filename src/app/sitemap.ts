@@ -4,96 +4,26 @@ import { SITE_URL } from "@/lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  return [
-    {
-      url: SITE_URL,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${SITE_URL}/#about`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/#launch`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}/#programs`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}/#academy`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}/#giveaways`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/#affiliate`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/#faq`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/#waitlist`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.95,
-    },
-    {
-      url: `${SITE_URL}/#values`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${SITE_URL}/#network`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/humans.txt`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.2,
-    },
-    {
-      url: `${SITE_URL}/llms.txt`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/llms-full.txt`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/ai.txt`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-  ];
+  const pages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] =
+    [
+      { path: "/", changeFrequency: "weekly", priority: 1 },
+      { path: "/what-is-reborn-academy", changeFrequency: "weekly", priority: 0.95 },
+      { path: "/waitlist", changeFrequency: "daily", priority: 0.95 },
+      { path: "/launch", changeFrequency: "weekly", priority: 0.9 },
+      { path: "/programs", changeFrequency: "weekly", priority: 0.9 },
+      { path: "/about", changeFrequency: "monthly", priority: 0.85 },
+      { path: "/faq", changeFrequency: "weekly", priority: 0.85 },
+      { path: "/feed.xml", changeFrequency: "weekly", priority: 0.4 },
+      { path: "/llms.txt", changeFrequency: "monthly", priority: 0.3 },
+      { path: "/llms-full.txt", changeFrequency: "monthly", priority: 0.3 },
+      { path: "/ai.txt", changeFrequency: "monthly", priority: 0.3 },
+      { path: "/humans.txt", changeFrequency: "yearly", priority: 0.2 },
+    ];
+
+  return pages.map((page) => ({
+    url: page.path === "/" ? SITE_URL : `${SITE_URL}${page.path}`,
+    lastModified: now,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 }

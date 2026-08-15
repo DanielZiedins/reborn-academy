@@ -28,6 +28,7 @@ export const homeMetadata: Metadata = {
     types: {
       "application/llms.txt": `${SITE_URL}/llms.txt`,
       "text/plain": `${SITE_URL}/llms-full.txt`,
+      "application/rss+xml": `${SITE_URL}/feed.xml`,
     },
   },
   robots: {

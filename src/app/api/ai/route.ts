@@ -33,6 +33,10 @@ export async function GET() {
     `- llms.txt: ${SITE_URL}/llms.txt`,
     `- llms-full.txt: ${SITE_URL}/llms-full.txt`,
     `- sitemap: ${SITE_URL}/sitemap.xml`,
+    `- RSS: ${SITE_URL}/feed.xml`,
+    `- Waitlist: ${SITE_URL}/waitlist`,
+    `- What is Reborn Academy: ${SITE_URL}/what-is-reborn-academy`,
+    `- FAQ: ${SITE_URL}/faq`,
   ];
 
   return new Response(lines.join("\n"), {

@@ -13,8 +13,26 @@ import {
   Gift,
   User,
   ListChecks,
+  BookOpen,
 } from "lucide-react";
 import { SITE_URL } from "@/lib/seo";
+
+function go(idOrPath: string) {
+  if (idOrPath.startsWith("/")) {
+    window.location.assign(idOrPath);
+    return;
+  }
+  const el = document.getElementById(idOrPath);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+  if (idOrPath === "waitlist") {
+    window.location.assign("/waitlist");
+    return;
+  }
+  window.location.assign(`/#${idOrPath}`);
+}
 
 type Command = {
   id: string;
@@ -69,63 +87,77 @@ export function CommandPalette() {
         label: "Join the waitlist",
         hint: "W",
         icon: Sparkles,
-        run: () => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("waitlist"),
+      },
+      {
+        id: "guide",
+        label: "What is Reborn Academy?",
+        hint: "Guide",
+        icon: BookOpen,
+        run: () => go("/what-is-reborn-academy"),
+      },
+      {
+        id: "programs-page",
+        label: "Open programs",
+        hint: "Programs",
+        icon: Cross,
+        run: () => go("/programs"),
       },
       {
         id: "video",
         label: "Watch the Reborn vision",
         hint: "Video",
         icon: Play,
-        run: () => document.getElementById("video")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("video"),
       },
       {
         id: "programs",
         label: "Explore five pillars",
         hint: "Programs",
         icon: Cross,
-        run: () => document.getElementById("programs")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("programs"),
       },
       {
         id: "academy",
         label: "Preview dashboard + app",
         hint: "Academy",
         icon: LayoutDashboard,
-        run: () => document.getElementById("academy")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("academy"),
       },
       {
         id: "giveaways",
         label: "See rewards & giveaways",
         hint: "Rewards",
         icon: Gift,
-        run: () => document.getElementById("giveaways")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("giveaways"),
       },
       {
         id: "community",
         label: "Community & war room",
         hint: "Community",
         icon: Users,
-        run: () => document.getElementById("community")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("community"),
       },
       {
         id: "founders",
         label: "Meet the founders",
         hint: "About",
         icon: User,
-        run: () => document.getElementById("founders")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("/about"),
       },
       {
         id: "faq",
         label: "Read FAQs",
         hint: "FAQ",
         icon: HelpCircle,
-        run: () => document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("/faq"),
       },
       {
         id: "checklist",
         label: "Open launch checklist",
         hint: "Checklist",
         icon: ListChecks,
-        run: () => document.getElementById("checklist")?.scrollIntoView({ behavior: "smooth" }),
+        run: () => go("checklist"),
       },
       {
         id: "calendar",

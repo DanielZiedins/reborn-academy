@@ -5,6 +5,7 @@ import { programs } from "@/lib/content";
 import { FadeInUp } from "@/components/ui/motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export function ProgramsSection() {
   const [openId, setOpenId] = useState<string | null>(programs[0]?.id ?? null);
@@ -19,7 +20,10 @@ export function ProgramsSection() {
           </h2>
           <p className="mt-4 max-w-2xl text-[#999]">
             Full curriculum drops at relaunch — every area rooted in Scripture, built for believers
-            who refuse to live small. Explore each pillar below.
+            who refuse to live small.{" "}
+            <Link href="/programs" className="text-[#b8962e] hover:text-white">
+              Read the programs guide →
+            </Link>
           </p>
         </FadeInUp>
 

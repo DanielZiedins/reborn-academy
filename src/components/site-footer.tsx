@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks } from "@/lib/content";
+import { SITE_PAGES } from "@/lib/pages";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 import { CtaButton } from "@/components/ui/cta-button";
 
@@ -17,7 +17,9 @@ export function SiteFooter() {
             Join the waitlist. Be first when the dashboard, app, community, and affiliate program open.
           </p>
           <div className="mt-8 flex justify-center">
-            <CtaButton href="#waitlist" className="group">Enter The Academy</CtaButton>
+            <CtaButton href="/waitlist" className="group">
+              Enter The Academy
+            </CtaButton>
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@ export function SiteFooter() {
           </div>
 
           <nav className="flex flex-wrap justify-center gap-6" aria-label="Footer navigation">
-            {navLinks.map((l) => (
+            {SITE_PAGES.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -68,13 +70,25 @@ export function SiteFooter() {
         </div>
 
         <div className="page-width mt-8 flex flex-wrap justify-center gap-4 text-[10px] text-[#444]">
-          <Link href="/llms.txt" className="hover:text-[#888]">llms.txt</Link>
+          <Link href="/llms.txt" className="hover:text-[#888]">
+            llms.txt
+          </Link>
           <span aria-hidden="true">·</span>
-          <Link href="/ai.txt" className="hover:text-[#888]">ai.txt</Link>
+          <Link href="/ai.txt" className="hover:text-[#888]">
+            ai.txt
+          </Link>
           <span aria-hidden="true">·</span>
-          <Link href="/humans.txt" className="hover:text-[#888]">humans.txt</Link>
+          <Link href="/humans.txt" className="hover:text-[#888]">
+            humans.txt
+          </Link>
           <span aria-hidden="true">·</span>
-          <Link href="/sitemap.xml" className="hover:text-[#888]">Sitemap</Link>
+          <Link href="/feed.xml" className="hover:text-[#888]">
+            RSS
+          </Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/sitemap.xml" className="hover:text-[#888]">
+            Sitemap
+          </Link>
         </div>
 
         <p className="page-width mt-6 text-center text-[10px] text-[#444]">

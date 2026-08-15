@@ -43,7 +43,7 @@ export function LaunchToast() {
         </p>
         <p className="mt-1 text-sm text-white font-semibold">{LAUNCH_DATE_LABEL}</p>
         <p className="mt-1 text-xs text-[#888]">Waitlist open — first access to dashboard, app & rewards.</p>
-        <Link href="#waitlist" className="launch-toast-cta" onClick={dismiss}>
+        <Link href="/waitlist" className="launch-toast-cta" onClick={dismiss}>
           Join now →
         </Link>
       </div>

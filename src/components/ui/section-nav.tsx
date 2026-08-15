@@ -16,6 +16,7 @@ const SECTIONS = [
 export function SectionNav() {
   const [active, setActive] = useState("launch");
   const [visible, setVisible] = useState(false);
+  const [hasSections, setHasSections] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600);
@@ -28,6 +29,7 @@ export function SectionNav() {
     const els = SECTIONS.map((s) => document.getElementById(s.id)).filter(
       (el): el is HTMLElement => Boolean(el),
     );
+    setHasSections(els.length > 0);
     if (!els.length) return;
 
     const observer = new IntersectionObserver(
@@ -44,7 +46,7 @@ export function SectionNav() {
     return () => observer.disconnect();
   }, []);
 
-  if (!visible) return null;
+  if (!visible || !hasSections) return null;
 
   return (
     <nav className="section-nav" aria-label="Page sections">

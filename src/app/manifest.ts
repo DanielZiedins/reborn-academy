@@ -21,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Join waitlist",
         short_name: "Waitlist",
-        url: "/#waitlist",
+        url: "/waitlist",
       },
       {
         name: "Watch the vision",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { FAQ_ITEMS } from "@/lib/seo";
 import { Reveal } from "@/components/ui/reveal";
@@ -18,7 +19,10 @@ export function FaqSection() {
           </h2>
           <p className="mt-4 max-w-2xl text-[#999]">
             Clear answers for search, discovery, and anyone researching what Reborn Academy is and
-            who it&apos;s for.
+            who it&apos;s for.{" "}
+            <Link href="/faq" className="text-[#b8962e] hover:text-white">
+              Open the full FAQ →
+            </Link>
           </p>
         </Reveal>
 

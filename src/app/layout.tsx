@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
-import { JsonLdScripts } from "@/components/seo/json-ld";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -54,15 +53,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i.ytimg.com" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://vmpkiwfvnlzraabtjkig.supabase.co" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Reborn Academy feed" />
         <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI site summary" />
-        <link rel="preload" as="image" href="/images/phoenix-rise.png" fetchPriority="high" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <JsonLdScripts />
         {children}
       </body>
     </html>

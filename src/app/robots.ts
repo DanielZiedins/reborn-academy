@@ -1,6 +1,28 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
+const AI_BOTS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "ClaudeBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Google-Extended",
+  "Google-CloudVertexBot",
+  "Applebot-Extended",
+  "Meta-ExternalAgent",
+  "Bytespider",
+  "CCBot",
+  "Amazonbot",
+  "YouBot",
+  "DuckAssistBot",
+  "cohere-ai",
+  "Diffbot",
+  "ImagesiftBot",
+  "Timpibot",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,56 +31,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
-      {
-        userAgent: "GPTBot",
+      ...AI_BOTS.map((userAgent) => ({
+        userAgent,
         allow: "/",
         disallow: ["/api/"],
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "OAI-SearchBot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Applebot-Extended",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Meta-ExternalAgent",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Bytespider",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "CCBot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
+      })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

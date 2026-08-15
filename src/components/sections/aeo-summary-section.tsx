@@ -35,7 +35,10 @@ export function AeoSummarySection() {
                 Founded by{" "}
                 <strong className="text-[#ccc]">Mike Gagat</strong> and{" "}
                 <strong className="text-[#ccc]">Daniel Ziedins</strong>. Part of Thy Kingdom
-                Network.
+                Network.{" "}
+                <Link href="/what-is-reborn-academy" className="text-[#b8962e] hover:text-white">
+                  Read the full guide →
+                </Link>
               </p>
             </article>
           </Reveal>
@@ -50,7 +53,7 @@ export function AeoSummarySection() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <Link href="#waitlist" className="btn btn-red mt-8 w-full">
+              <Link href="/waitlist" className="btn btn-red mt-8 w-full">
                 Join free waitlist
               </Link>
             </aside>

@@ -1,4 +1,5 @@
 import { Church, TrendingUp } from "lucide-react";
+import Link from "next/link";
 import { FadeInUp } from "@/components/ui/motion";
 import Image from "next/image";
 
@@ -14,7 +15,10 @@ export function FoundersSection() {
             </h2>
             <p className="mt-4 text-[#999]">
               We&apos;re building this to walk the journey with you — not hand you videos and disappear.
-              Entrepreneurs, leaders, and believers committed to the Kingdom.
+              Entrepreneurs, leaders, and believers committed to the Kingdom.{" "}
+              <Link href="/about" className="text-[#b8962e] hover:text-white">
+                Full founder story →
+              </Link>
             </p>
           </div>
         </FadeInUp>

@@ -14,7 +14,7 @@ export default function NotFound() {
         <Link href="/" className="btn btn-red">
           Return home
         </Link>
-        <Link href="/#waitlist" className="btn btn-outline">
+        <Link href="/waitlist" className="btn btn-outline">
           Join the waitlist
         </Link>
       </div>

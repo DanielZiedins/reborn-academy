@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { LAUNCH_DATE, LAUNCH_DATE_LABEL } from "@/lib/launch";
 
 export function MobileStickyCta() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [days, setDays] = useState<number | null>(null);
 
@@ -39,7 +41,7 @@ export function MobileStickyCta() {
               : `${days}d to launch`}
         </span>
       </div>
-      <Link href="#waitlist" className="mobile-sticky-cta-btn">
+      <Link href={pathname === "/" ? "#waitlist" : "/waitlist"} className="mobile-sticky-cta-btn">
         Join the waitlist
       </Link>
     </div>

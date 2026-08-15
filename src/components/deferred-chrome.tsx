@@ -49,7 +49,9 @@ export function DeferredChrome({ children }: { children?: ReactNode }) {
       }
       if (e.key === "w" || e.key === "W") {
         e.preventDefault();
-        document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
+        const el = document.getElementById("waitlist");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+        else window.location.assign("/waitlist");
       }
       if (e.key === "g" || e.key === "G") {
         e.preventDefault();
