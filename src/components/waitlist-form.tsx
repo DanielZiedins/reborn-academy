@@ -1,8 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2, Sparkles, Share2, Copy, Check, BadgeCheck } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+  Sparkles,
+  Share2,
+  Copy,
+  Check,
+  BadgeCheck,
+} from "lucide-react";
 import { ConfettiBurst } from "@/components/ui/confetti-burst";
+import { useWaitlistCount } from "@/components/providers/waitlist-count-provider";
+import { suggestEmailFix } from "@/lib/email-suggest";
 import { SITE_URL } from "@/lib/seo";
 
 type Props = {
@@ -30,10 +41,16 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const [showConfetti, setShowConfetti] = useState(false);
   const [copied, setCopied] = useState(false);
   const [resolvedSource, setResolvedSource] = useState(source);
+  const [suggestion, setSuggestion] = useState<string | null>(null);
+  const { refresh } = useWaitlistCount();
 
   useEffect(() => {
     setResolvedSource(resolveSource(source));
   }, [source]);
+
+  useEffect(() => {
+    setSuggestion(suggestEmailFix(email));
+  }, [email]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -73,6 +90,8 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
       setShowConfetti(true);
       setEmail("");
       setName("");
+      setSuggestion(null);
+      void refresh();
     } catch (err) {
       setStatus("error");
       setMessage(
@@ -91,6 +110,23 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     } catch {
       /* ignore */
     }
+  }
+
+  async function nativeShare() {
+    const payload = {
+      title: "Reborn Academy",
+      text: "I just joined the Reborn Academy waitlist — faith-based academy re-launching November 1, 2026.",
+      url: SITE_URL,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(payload);
+        return;
+      }
+    } catch {
+      /* fall through to copy */
+    }
+    await copyLink();
   }
 
   if (status === "success") {
@@ -120,13 +156,16 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
               Check your email for confirmation. Share Reborn with a believer who needs this.
             </p>
             <div className="waitlist-share mt-4">
+              <button type="button" className="waitlist-share-btn" onClick={nativeShare}>
+                <Share2 size={14} aria-hidden="true" /> Share
+              </button>
               <a
                 href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="waitlist-share-btn"
               >
-                <Share2 size={14} aria-hidden="true" /> Share
+                Post
               </a>
               <button type="button" className="waitlist-share-btn" onClick={copyLink}>
                 {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
@@ -153,6 +192,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
             onChange={(e) => setName(e.target.value)}
             maxLength={120}
             aria-label="Full name"
+            autoComplete="name"
           />
         )}
         <input
@@ -164,6 +204,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           onChange={(e) => setEmail(e.target.value)}
           aria-label="Email address"
           autoComplete="email"
+          inputMode="email"
         />
         <button
           type="submit"
@@ -179,12 +220,28 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           )}
         </button>
       </div>
+      {suggestion && (
+        <p className="mt-3 text-xs text-[#b8962e]">
+          Did you mean{" "}
+          <button
+            type="button"
+            className="email-suggest-btn"
+            onClick={() => {
+              setEmail(suggestion);
+              setSuggestion(null);
+            }}
+          >
+            {suggestion}
+          </button>
+          ?
+        </p>
+      )}
       {status === "error" && (
         <p className="mt-3 text-sm text-[#ff6b6b]" role="alert">
           {message}
         </p>
       )}
-      {variant !== "inline" && status !== "error" && (
+      {variant !== "inline" && status !== "error" && !suggestion && (
         <p className="mt-3 text-xs text-[#666]">
           Be the first to know when Reborn Academy relaunches. No spam — unsubscribe anytime.
         </p>

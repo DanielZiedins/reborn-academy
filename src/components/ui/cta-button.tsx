@@ -12,6 +12,14 @@ type Props = {
   icon?: boolean;
 };
 
+let prefetchedCount = false;
+
+function prefetchWarm() {
+  if (prefetchedCount) return;
+  prefetchedCount = true;
+  void fetch("/api/waitlist/count").catch(() => {});
+}
+
 export function CtaButton({
   href,
   children,
@@ -48,6 +56,8 @@ export function CtaButton({
       className={`btn ${variantClass} magnetic-cta ${className}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      onMouseEnter={prefetchWarm}
+      onFocus={prefetchWarm}
     >
       {children}
       {icon && <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />}

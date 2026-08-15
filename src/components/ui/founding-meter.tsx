@@ -2,27 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Users } from "lucide-react";
+import { useWaitlistCount } from "@/components/providers/waitlist-count-provider";
 
-/** Soft founding-cohort visual — uses real waitlist count, labeled honestly */
 const GOAL = 250;
 
 export function FoundingMeter({ className = "" }: { className?: string }) {
-  const [count, setCount] = useState<number | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/waitlist/count")
-      .then((r) => r.json())
-      .then((d) => {
-        if (!cancelled && d.ok) setCount(typeof d.count === "number" ? d.count : 0);
-      })
-      .catch(() => {
-        if (!cancelled) setCount(0);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const { count } = useWaitlistCount();
 
   if (count === null) return null;
 
@@ -39,7 +24,14 @@ export function FoundingMeter({ className = "" }: { className?: string }) {
           {count.toLocaleString()} / {GOAL.toLocaleString()}
         </span>
       </div>
-      <div className="founding-meter-track" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={GOAL} aria-label="Founding waitlist progress">
+      <div
+        className="founding-meter-track"
+        role="progressbar"
+        aria-valuenow={count}
+        aria-valuemin={0}
+        aria-valuemax={GOAL}
+        aria-label="Founding waitlist progress"
+      >
         <div className="founding-meter-fill" style={{ width: `${pct}%` }} />
       </div>
       <p className="founding-meter-sub">

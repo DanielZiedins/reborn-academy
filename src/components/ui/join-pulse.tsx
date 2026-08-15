@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Radio } from "lucide-react";
+import { useWaitlistCount } from "@/components/providers/waitlist-count-provider";
 
 const LINES = [
   "Waitlist open — first access for believers who move early",
@@ -13,24 +14,11 @@ const LINES = [
 
 export function JoinPulse({ className = "" }: { className?: string }) {
   const [index, setIndex] = useState(0);
-  const [count, setCount] = useState<number | null>(null);
+  const { count } = useWaitlistCount();
 
   useEffect(() => {
     const id = setInterval(() => setIndex((i) => (i + 1) % LINES.length), 4200);
     return () => clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/waitlist/count")
-      .then((r) => r.json())
-      .then((d) => {
-        if (!cancelled && d.ok) setCount(typeof d.count === "number" ? d.count : null);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   return (

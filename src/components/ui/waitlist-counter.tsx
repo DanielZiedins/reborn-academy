@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Users } from "lucide-react";
+import { useWaitlistCount } from "@/components/providers/waitlist-count-provider";
 
 type Props = {
   className?: string;
@@ -9,29 +10,8 @@ type Props = {
 };
 
 export function WaitlistCounter({ className = "", compact = false }: Props) {
-  const [count, setCount] = useState<number | null>(null);
+  const { count, loading } = useWaitlistCount();
   const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      try {
-        const res = await fetch("/api/waitlist/count");
-        const data = await res.json();
-        if (!cancelled && data.ok) setCount(typeof data.count === "number" ? data.count : 0);
-      } catch {
-        if (!cancelled) setCount(0);
-      }
-    }
-
-    load();
-    const id = setInterval(load, 90_000);
-    return () => {
-      cancelled = true;
-      clearInterval(id);
-    };
-  }, []);
 
   useEffect(() => {
     if (count === null) return;
@@ -59,7 +39,7 @@ export function WaitlistCounter({ className = "", compact = false }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- animate only when count changes
   }, [count]);
 
-  if (count === null) {
+  if (loading && count === null) {
     return (
       <div className={`waitlist-counter waitlist-counter-loading ${className}`} aria-hidden="true">
         <Users size={14} />
@@ -68,8 +48,9 @@ export function WaitlistCounter({ className = "", compact = false }: Props) {
     );
   }
 
+  const n = count ?? 0;
   const label =
-    count <= 1
+    n <= 1
       ? "Be among the first believers on the waitlist"
       : compact
         ? `${display.toLocaleString()} on the waitlist`

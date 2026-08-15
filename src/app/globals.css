@@ -2841,11 +2841,231 @@ input {
 }
 
 /* Hero stays paint-priority (no content-visibility) */
-.hero.section,
 .hero {
   content-visibility: visible;
 }
 
 .waitlist-section {
   content-visibility: visible;
+}
+
+/* Email suggest */
+.email-suggest-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--gold-light);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Scripture strip */
+.scripture-strip {
+  padding: 36px 0;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  background: linear-gradient(180deg, #080808, #0a0a0a);
+}
+
+.scripture-quote {
+  margin: 0 auto;
+  max-width: 760px;
+  text-align: center;
+}
+
+.scripture-quote p {
+  margin: 0;
+  font-size: clamp(16px, 2.2vw, 22px);
+  line-height: 1.55;
+  color: #ddd;
+  font-style: italic;
+  animation: join-pulse-in 0.5s var(--ease-out);
+}
+
+.scripture-quote cite {
+  display: block;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Who it's for */
+.fit-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .fit-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fit-card {
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  height: 100%;
+}
+
+.fit-card-yes {
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+.fit-card-no {
+  border-color: rgba(255, 107, 107, 0.18);
+}
+
+.fit-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: white;
+  margin: 0 0 18px;
+}
+
+.fit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.fit-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #999;
+}
+
+.fit-icon-yes {
+  color: #4ade80;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fit-icon-no {
+  color: #ff6b6b;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Launch checklist */
+.checklist-layout {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 960px) {
+  .checklist-layout {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+}
+
+.checklist-progress-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.checklist-progress-track {
+  height: 6px;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.checklist-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--reborn-red), var(--gold));
+  transition: width 0.45s var(--ease-out);
+}
+
+.checklist-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 8px 4px 4px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item-done .checklist-toggle span {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.checklist-toggle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.checklist-toggle:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.checklist-link {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.checklist-link:hover {
+  color: var(--gold-light);
+}
+
+/* Marquee pause on hover for accessibility */
+.perks-marquee:hover .perks-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .perks-marquee-track {
+    animation: none;
+  }
 }

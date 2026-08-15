@@ -42,6 +42,8 @@ export function CommunitySection() {
                 width={600}
                 height={500}
                 className="w-full rounded-sm border border-[#2a2a2a]"
+                sizes="(max-width: 1024px) 100vw, 600px"
+                quality={75}
               />
               <div className="community-quote">
                 <p className="text-sm italic text-[#e7d9ae]">
