@@ -32,6 +32,9 @@ export function HeroSection() {
       <FloatingOrb className="orb-gold orb-hero-2" />
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="hero-noise" aria-hidden="true" />
+      <div className="hero-embers" aria-hidden="true">
+        <span /><span /><span /><span /><span /><span />
+      </div>
 
       <ParallaxLayer className="absolute inset-0" strength={90}>
         <Image
@@ -127,7 +130,7 @@ export function HeroSection() {
               Watch the vision <ArrowDown size={14} />
             </Link>
             <p className="mt-3 hidden text-[10px] uppercase tracking-[0.16em] text-[#444] lg:block">
-              Tip: press <kbd className="kbd">W</kbd> anytime to jump to the waitlist
+              Tip: <kbd className="kbd">W</kbd> waitlist · <kbd className="kbd">⌘K</kbd> command palette
             </p>
           </motion.div>
         </div>

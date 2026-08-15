@@ -33,6 +33,15 @@ function resolveSource(fallback: string) {
   return fallback;
 }
 
+function referralSlug(name: string, email: string) {
+  const base = (name.trim() || email.split("@")[0] || "reborn")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 24);
+  return base || "reborn";
+}
+
 export function WaitlistForm({ variant = "inline", source = "reborn-academy.com" }: Props) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -42,6 +51,8 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
   const [copied, setCopied] = useState(false);
   const [resolvedSource, setResolvedSource] = useState(source);
   const [suggestion, setSuggestion] = useState<string | null>(null);
+  const [rank, setRank] = useState<number | null>(null);
+  const [inviteUrl, setInviteUrl] = useState(SITE_URL);
   const { refresh } = useWaitlistCount();
 
   useEffect(() => {
@@ -62,6 +73,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000);
+      const invite = `${SITE_URL}/?ref=${encodeURIComponent(referralSlug(name, email))}`;
 
       const res = await fetch("/api/waitlist", {
         method: "POST",
@@ -83,6 +95,8 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
         return;
       }
 
+      setInviteUrl(invite);
+      setRank(typeof data.count === "number" && data.count > 0 ? data.count : null);
       setStatus("success");
       setMessage(
         "You're on the list. Watch your inbox — we'll be first to tell you when we launch November 1, 2026.",
@@ -104,7 +118,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
 
   async function copyLink() {
     try {
-      await navigator.clipboard.writeText(SITE_URL);
+      await navigator.clipboard.writeText(inviteUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -116,7 +130,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     const payload = {
       title: "Reborn Academy",
       text: "I just joined the Reborn Academy waitlist — faith-based academy re-launching November 1, 2026.",
-      url: SITE_URL,
+      url: inviteUrl,
     };
     try {
       if (navigator.share) {
@@ -133,7 +147,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
     const shareText = encodeURIComponent(
       "I just joined the Reborn Academy waitlist — faith-based academy re-launching November 1, 2026. Join me:",
     );
-    const shareUrl = encodeURIComponent(SITE_URL);
+    const shareUrl = encodeURIComponent(inviteUrl);
 
     return (
       <div className="waitlist-success-wrap">
@@ -146,18 +160,18 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
           <div className="flex-1">
             <div className="founding-badge">
               <BadgeCheck size={14} aria-hidden="true" />
-              Founding waitlist member
+              {rank ? `Founding member #${rank}` : "Founding waitlist member"}
             </div>
             <p className="mt-3 text-sm font-bold uppercase tracking-wider text-[#4ade80]">
               You&apos;re on the waitlist
             </p>
             <p className="mt-2 text-sm leading-relaxed text-[#a8c4a8]">{message}</p>
             <p className="mt-3 text-xs text-[#6a8a6a]">
-              Check your email for confirmation. Share Reborn with a believer who needs this.
+              Share your invite link so another believer can lock a founding spot.
             </p>
             <div className="waitlist-share mt-4">
               <button type="button" className="waitlist-share-btn" onClick={nativeShare}>
-                <Share2 size={14} aria-hidden="true" /> Share
+                <Share2 size={14} aria-hidden="true" /> Share invite
               </button>
               <a
                 href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
@@ -169,7 +183,7 @@ export function WaitlistForm({ variant = "inline", source = "reborn-academy.com"
               </a>
               <button type="button" className="waitlist-share-btn" onClick={copyLink}>
                 {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
-                {copied ? "Copied" : "Copy link"}
+                {copied ? "Copied" : "Copy invite"}
               </button>
             </div>
           </div>

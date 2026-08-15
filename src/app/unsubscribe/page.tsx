@@ -37,14 +37,13 @@ export default async function UnsubscribePage({ searchParams }: Props) {
 
   if (!token) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#050505] px-6 text-center">
-        <div>
-          <h1 className="text-2xl font-extrabold text-white">Invalid link</h1>
-          <p className="mt-3 text-[#888]">This unsubscribe link is missing a token.</p>
-          <Link href="/" className="mt-6 inline-block text-[#b8962e] underline">
-            Return to {SITE_NAME}
-          </Link>
-        </div>
+      <main className="not-found-page">
+        <p className="eyebrow">Waitlist</p>
+        <h1 className="display mt-4 text-[clamp(32px,6vw,64px)] text-white">Invalid link</h1>
+        <p className="mt-3 max-w-md text-[#888]">This unsubscribe link is missing a token.</p>
+        <Link href="/" className="btn btn-red mt-8">
+          Return to {SITE_NAME}
+        </Link>
       </main>
     );
   }
@@ -52,20 +51,19 @@ export default async function UnsubscribePage({ searchParams }: Props) {
   const ok = await unsubscribe(token);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#050505] px-6 text-center">
-      <div>
-        <h1 className="text-2xl font-extrabold text-[#cc1111]">
-          {ok ? "Unsubscribed" : "Something went wrong"}
-        </h1>
-        <p className="mt-3 text-[#888]">
-          {ok
-            ? `You've been removed from the ${SITE_NAME} waitlist.`
-            : "We couldn't process your request. Please email hello@thykingdom.net"}
-        </p>
-        <Link href="/" className="mt-6 inline-block text-[#b8962e] underline">
-          Return to reborn-academy.com
-        </Link>
-      </div>
+    <main className="not-found-page">
+      <p className="eyebrow">{ok ? "Done" : "Error"}</p>
+      <h1 className="display mt-4 text-[clamp(32px,6vw,64px)] text-white">
+        {ok ? "Unsubscribed" : "Something went wrong"}
+      </h1>
+      <p className="mt-3 max-w-md text-[#888]">
+        {ok
+          ? `You've been removed from the ${SITE_NAME} waitlist.`
+          : "We couldn't process your request. Please email hello@thykingdom.net"}
+      </p>
+      <Link href="/" className="btn btn-red mt-8">
+        Return to reborn-academy.com
+      </Link>
     </main>
   );
 }

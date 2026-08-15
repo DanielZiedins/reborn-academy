@@ -172,10 +172,10 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Reborn Academy is for young, ambitious Christians who refuse an ordinary life — believers who want direction, structure, accountability, and a community of like-minded people pursuing growth in every area of life with Christ at the center.",
   },
   {
-    id: "who-for",
-    question: "Who is Reborn Academy for — and who is it not for?",
+    id: "covenant",
+    question: "What does Reborn Academy promise members?",
     answer:
-      "Reborn Academy is for young, ambitious Christians who want faith and excellence across faith, fitness, business, finances, and family — with structure, accountability, and a high-standard community. It is not for fluff, compromised teaching, or anyone looking for results without obedience, discipline, and doing the work.",
+      "Reborn Academy's covenant with members is fourfold: founders walk the journey with you, there is no bait-and-switch on the November 1, 2026 launch ecosystem, every framework stays faith-first without compromise, and the academy is built for believers who want standards — not fluff.",
   },
   {
     id: "how-to-join",

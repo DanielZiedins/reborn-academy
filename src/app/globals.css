@@ -929,7 +929,12 @@ input {
   transition:
     background 0.35s,
     border-color 0.35s,
-    backdrop-filter 0.35s;
+    backdrop-filter 0.35s,
+    transform 0.35s var(--ease-out);
+}
+
+.site-header-hidden {
+  transform: translateY(-100%);
 }
 
 .site-header-transparent {
@@ -3068,4 +3073,189 @@ input {
   .perks-marquee-track {
     animation: none;
   }
+}
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  --spot-x: 50%;
+  --spot-y: 0%;
+}
+
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--spot-x) var(--spot-y),
+    rgba(204, 17, 17, 0.16),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+.covenant-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.covenant-card {
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  height: 100%;
+}
+
+.hero-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-embers span {
+  position: absolute;
+  bottom: -8px;
+  width: 3px;
+  height: 3px;
+  background: #cc1111;
+  opacity: 0.45;
+  border-radius: 50%;
+  animation: ember-rise 9s linear infinite;
+  box-shadow: 0 0 8px rgba(204, 17, 17, 0.6);
+}
+
+.hero-embers span:nth-child(1) { left: 12%; animation-duration: 8s; animation-delay: 0s; }
+.hero-embers span:nth-child(2) { left: 28%; animation-duration: 11s; animation-delay: 1.2s; background: #b8962e; }
+.hero-embers span:nth-child(3) { left: 47%; animation-duration: 9.5s; animation-delay: 2s; }
+.hero-embers span:nth-child(4) { left: 63%; animation-duration: 12s; animation-delay: 0.6s; background: #b8962e; }
+.hero-embers span:nth-child(5) { left: 78%; animation-duration: 10s; animation-delay: 3s; }
+.hero-embers span:nth-child(6) { left: 91%; animation-duration: 13s; animation-delay: 1.8s; }
+
+@keyframes ember-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  12% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) scale(0.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-embers { display: none; }
+}
+
+.cmdk {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: start center;
+  padding: 12vh 16px 16px;
+}
+
+.cmdk-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  border: none;
+}
+
+.cmdk-panel {
+  position: relative;
+  width: min(560px, 100%);
+  border: 1px solid #2a2a2a;
+  background: #0c0c0c;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65);
+}
+
+.cmdk-input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #222;
+  color: white;
+  font-size: 15px;
+}
+
+.cmdk-input:focus {
+  outline: none;
+}
+
+.cmdk-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.cmdk-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cmdk-item:hover,
+.cmdk-item:focus {
+  background: rgba(204, 17, 17, 0.12);
+  color: white;
+}
+
+.cmdk-item kbd,
+.cmdk-foot kbd {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #666;
+  border: 1px solid #333;
+  padding: 2px 6px;
+}
+
+.cmdk-empty {
+  padding: 20px;
+  color: #666;
+  font-size: 13px;
+}
+
+.cmdk-foot {
+  margin: 0;
+  padding: 10px 16px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 11px;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.not-found-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(204, 17, 17, 0.18), transparent 50%),
+    #050505;
 }

@@ -10,14 +10,21 @@ import { LaunchCountdown } from "@/components/ui/launch-countdown";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setHidden(y > lastY && y > 140 && !open);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     const ids = navLinks.map((l) => l.href.replace("#", ""));
@@ -50,7 +57,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`site-header ${scrolled ? "site-header-scrolled" : "site-header-transparent"}`}
+      className={`site-header ${scrolled ? "site-header-scrolled" : "site-header-transparent"} ${hidden ? "site-header-hidden" : ""}`}
     >
       <div className="page-width flex h-full items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-3 shrink-0">

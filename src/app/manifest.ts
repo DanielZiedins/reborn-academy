@@ -17,5 +17,17 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
     ],
+    shortcuts: [
+      {
+        name: "Join waitlist",
+        short_name: "Waitlist",
+        url: "/#waitlist",
+      },
+      {
+        name: "Watch the vision",
+        short_name: "Video",
+        url: "/#video",
+      },
+    ],
   };
 }

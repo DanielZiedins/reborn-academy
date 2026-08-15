@@ -23,6 +23,10 @@ const MobileStickyCta = dynamic(
   () => import("@/components/ui/mobile-sticky-cta").then((m) => m.MobileStickyCta),
   { ssr: false },
 );
+const CommandPalette = dynamic(
+  () => import("@/components/ui/command-palette").then((m) => m.CommandPalette),
+  { ssr: false },
+);
 
 export function DeferredChrome({ children }: { children?: ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -47,6 +51,10 @@ export function DeferredChrome({ children }: { children?: ReactNode }) {
         e.preventDefault();
         document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
       }
+      if (e.key === "g" || e.key === "G") {
+        e.preventDefault();
+        document.getElementById("giveaways")?.scrollIntoView({ behavior: "smooth" });
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -62,6 +70,7 @@ export function DeferredChrome({ children }: { children?: ReactNode }) {
       <MobileStickyCta />
       <BackToTop />
       <LaunchToast />
+      <CommandPalette />
     </>
   );
 }

@@ -27,6 +27,8 @@ export function FoundersSection() {
               width={700}
               height={500}
               className="w-full rounded-sm border border-[#2a2a2a]"
+              sizes="(max-width: 1024px) 100vw, 700px"
+              quality={78}
             />
           </FadeInUp>
 

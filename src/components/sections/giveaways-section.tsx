@@ -1,6 +1,7 @@
 import { Gift, Trophy, Sparkles, PartyPopper } from "lucide-react";
 import { FadeInUp } from "@/components/ui/motion";
 import { CtaButton } from "@/components/ui/cta-button";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 
 const rewards = [
@@ -47,7 +48,7 @@ export function GiveawaysSection() {
             const Icon = r.icon;
             return (
               <FadeInUp key={r.title} delay={0.06 * i}>
-                <article className="giveaway-card">
+                <SpotlightCard className="giveaway-card">
                   <div className="giveaway-icon">
                     <Icon size={22} aria-hidden="true" />
                   </div>
@@ -55,7 +56,7 @@ export function GiveawaysSection() {
                     {r.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#888]">{r.desc}</p>
-                </article>
+                </SpotlightCard>
               </FadeInUp>
             );
           })}

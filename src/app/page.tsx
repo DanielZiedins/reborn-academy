@@ -7,6 +7,7 @@ import { AeoSummarySection } from "@/components/sections/aeo-summary-section";
 import { AffiliateSection } from "@/components/sections/affiliate-section";
 import { CommunitySection } from "@/components/sections/community-section";
 import { ContrastSection } from "@/components/sections/contrast-section";
+import { CovenantSection } from "@/components/sections/covenant-section";
 import { DayInLifeSection } from "@/components/sections/day-in-life-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCtaSection } from "@/components/sections/final-cta-section";
@@ -55,6 +56,7 @@ export default function Home() {
         <HypeStatsSection />
         <AeoSummarySection />
         <ValuesSection />
+        <CovenantSection />
         <ScriptureStrip />
         <LaunchFeaturesSection />
         <LaunchTimelineSection />

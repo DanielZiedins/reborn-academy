@@ -46,7 +46,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true, subscribed: true });
+    let count = 0;
+    try {
+      const countRes = await fetch(`${supabaseUrl}/rest/v1/rpc/reborn_academy_waitlist_count`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: anonKey,
+          Authorization: `Bearer ${anonKey}`,
+        },
+        body: "{}",
+        cache: "no-store",
+      });
+      if (countRes.ok) {
+        const raw = await countRes.json();
+        count = typeof raw === "number" ? raw : Number(raw) || 0;
+      }
+    } catch {
+      /* rank is optional */
+    }
+
+    return NextResponse.json({ ok: true, subscribed: true, count });
   } catch (err) {
     console.error("[waitlist]", err);
     return NextResponse.json({ ok: false, error: "Server error." }, { status: 500 });

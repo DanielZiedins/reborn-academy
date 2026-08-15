@@ -54,6 +54,7 @@ export async function GET() {
     "## Site sections",
     "- #about — What is Reborn Academy (AEO summary)",
     "- #values — Non-negotiable faith-first values",
+    "- #covenant — Founder commitments to members",
     "- #checklist — Pre-launch checklist",
     "- #fit — Who Reborn Academy is for (and not for)",
     "- #launch — Launch features and coming-soon ecosystem",

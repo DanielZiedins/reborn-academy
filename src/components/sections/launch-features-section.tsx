@@ -1,5 +1,6 @@
 import { launchFeatures, LAUNCH_DATE_LABEL } from "@/lib/launch";
 import { FadeInUp } from "@/components/ui/motion";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 export function LaunchFeaturesSection() {
   return (
@@ -27,13 +28,13 @@ export function LaunchFeaturesSection() {
         <div className="launch-features-grid mt-14">
           {launchFeatures.map((f, i) => (
             <FadeInUp key={f.id} delay={0.05 * i}>
-              <article className="launch-feature-card">
+              <SpotlightCard className="launch-feature-card">
                 <span className="launch-feature-tag">{f.tag}</span>
                 <h3 className="mt-4 text-sm font-extrabold uppercase tracking-wider text-white">
                   {f.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#888]">{f.desc}</p>
-              </article>
+              </SpotlightCard>
             </FadeInUp>
           ))}
         </div>
