@@ -56,6 +56,10 @@ export const SITE_KEYWORDS = [
   "thy kingdom network academy",
   "join reborn academy waitlist",
   "reborn academy november 1 2026",
+  "how to join reborn academy",
+  "christian online community with standards",
+  "christian alternative to self help academy",
+  "reborn academy hamilton ontario",
 ];
 
 export const ORGANIZATION = {
@@ -245,6 +249,36 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "Will Reborn Academy have giveaways at launch?",
     answer:
       "Yes. Reborn Academy is planning launch giveaways and member rewards for the November 1, 2026 re-launch. Join the waitlist to be eligible for early access perks and launch announcements.",
+  },
+  {
+    id: "online",
+    question: "Is Reborn Academy online?",
+    answer:
+      "Yes. Reborn Academy is an online faith-based academy and membership community. Members get a custom dashboard, a Reborn mobile app, live community rooms, and curriculum they can use from anywhere. The official re-launch is November 1, 2026.",
+  },
+  {
+    id: "where-based",
+    question: "Where is Reborn Academy based?",
+    answer:
+      "Reborn Academy is part of Thy Kingdom Network, led by founders Mike Gagat and Daniel Ziedins, with roots in Hamilton, Ontario, Canada. The academy serves ambitious Christians worldwide through the upcoming dashboard, app, and live community.",
+  },
+  {
+    id: "waitlist-free",
+    question: "Is the Reborn Academy waitlist free?",
+    answer:
+      "Yes. Joining the Reborn Academy waitlist at https://www.reborn-academy.com/waitlist is free. It does not charge you and does not lock you into a membership plan. Pricing will be announced before the November 1, 2026 launch.",
+  },
+  {
+    id: "denomination",
+    question: "Do I need to belong to a specific denomination?",
+    answer:
+      "No. Reborn Academy is explicitly Christian and faith-first — Christ at the center, Scripture as the filter — but it is not a denominational membership. It is built for ambitious believers who want excellence without compromising their faith.",
+  },
+  {
+    id: "after-waitlist",
+    question: "What happens after I join the waitlist?",
+    answer:
+      "You receive a confirmation email and launch updates as November 1, 2026 approaches. Waitlist members get first access to the dashboard, custom app, community, affiliate program, and giveaways when doors open. You can unsubscribe from any email.",
   },
 ];
 

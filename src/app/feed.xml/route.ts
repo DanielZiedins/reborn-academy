@@ -7,6 +7,8 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
+import { GUIDES } from "@/lib/guides";
+import { PILLARS } from "@/lib/pillars";
 
 export async function GET() {
   const items = [
@@ -31,6 +33,16 @@ export async function GET() {
       summary:
         "Faith, Fitness, Business, Finances, and Family — the Reborn Academy curriculum for ambitious Christians.",
     },
+    ...GUIDES.map((g) => ({
+      title: g.title,
+      path: `/guides/${g.slug}`,
+      summary: g.description,
+    })),
+    ...PILLARS.map((p) => ({
+      title: `${p.name} — ${p.outcome}`,
+      path: `/programs/${p.slug}`,
+      summary: p.description,
+    })),
   ];
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>

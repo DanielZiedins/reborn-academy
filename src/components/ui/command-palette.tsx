@@ -90,6 +90,13 @@ export function CommandPalette() {
         run: () => go("waitlist"),
       },
       {
+        id: "guides",
+        label: "Read the guides",
+        hint: "Guides",
+        icon: BookOpen,
+        run: () => go("/guides"),
+      },
+      {
         id: "guide",
         label: "What is Reborn Academy?",
         hint: "Guide",

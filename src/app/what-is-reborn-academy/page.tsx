@@ -44,7 +44,7 @@ export default function WhatIsPage() {
             headline: "What is Reborn Academy?",
             description: AEO_SUMMARY_PARAGRAPH,
             datePublished: "2026-08-15",
-            dateModified: "2026-08-15",
+            dateModified: "2026-08-26",
             inLanguage: "en-US",
             author: ORGANIZATION.founders.map((f) => ({
               "@type": "Person",
@@ -108,7 +108,10 @@ export default function WhatIsPage() {
             <ul>
               {PROGRAM_PILLARS.map((p) => (
                 <li key={p.name}>
-                  <strong>{p.name}.</strong> {p.description}
+                  <strong>
+                    <Link href={`/programs/${p.name.toLowerCase()}`}>{p.name}</Link>.
+                  </strong>{" "}
+                  {p.description}
                 </li>
               ))}
             </ul>
@@ -146,7 +149,13 @@ export default function WhatIsPage() {
             <p>
               More answers live on the <Link href="/faq">FAQ</Link>. Meet the founders on{" "}
               <Link href="/about">About</Link>. See the{" "}
-              <Link href="/launch">launch timeline</Link>.
+              <Link href="/launch">launch timeline</Link>. Read{" "}
+              <Link href="/guides/christian-alternative-to-self-help">
+                A Christian alternative to self-help
+              </Link>
+              ,{" "}
+              <Link href="/guides/how-to-join-reborn-academy">how to join</Link>, and the{" "}
+              <Link href="/guides">full guides library</Link>.
             </p>
           </div>
           <PageCta />

@@ -2,6 +2,7 @@ import { FadeInUp } from "@/components/ui/motion";
 import { CtaButton } from "@/components/ui/cta-button";
 import { WaitlistCounter } from "@/components/ui/waitlist-counter";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
+import Link from "next/link";
 
 const contrasts = [
   { left: "Scattered motivation", right: "Structured transformation" },
@@ -45,7 +46,12 @@ export function ContrastSection() {
           <CtaButton href="#waitlist" className="group">
             Choose Reborn — join waitlist
           </CtaButton>
-          <p className="text-xs text-[#555]">Official re-launch {LAUNCH_DATE_LABEL}</p>
+          <p className="text-xs text-[#555]">
+            Official re-launch {LAUNCH_DATE_LABEL}.{" "}
+            <Link href="/guides/christian-alternative-to-self-help" className="text-[#b8962e] hover:text-white">
+              Why not generic self-help →
+            </Link>
+          </p>
         </FadeInUp>
       </div>
     </section>

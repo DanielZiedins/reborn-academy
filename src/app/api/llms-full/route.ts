@@ -12,6 +12,8 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { LAUNCH_DATE_LABEL, launchFeatures } from "@/lib/launch";
+import { GUIDES } from "@/lib/guides";
+import { PILLARS } from "@/lib/pillars";
 
 export async function GET() {
   const lines = [
@@ -55,6 +57,9 @@ export async function GET() {
     `- ${SITE_URL}/`,
     `- ${SITE_URL}/what-is-reborn-academy`,
     `- ${SITE_URL}/programs`,
+    ...PILLARS.map((p) => `- ${SITE_URL}/programs/${p.slug}`),
+    `- ${SITE_URL}/guides`,
+    ...GUIDES.map((g) => `- ${SITE_URL}/guides/${g.slug}`),
     `- ${SITE_URL}/launch`,
     `- ${SITE_URL}/about`,
     `- ${SITE_URL}/faq`,

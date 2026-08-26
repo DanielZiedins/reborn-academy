@@ -8,6 +8,8 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { LAUNCH_DATE_LABEL, launchFeatures } from "@/lib/launch";
+import { GUIDES } from "@/lib/guides";
+import { PILLARS } from "@/lib/pillars";
 
 export async function GET() {
   const lines = [
@@ -40,6 +42,9 @@ export async function GET() {
     `- Home: ${SITE_URL}/`,
     `- What is Reborn Academy: ${SITE_URL}/what-is-reborn-academy`,
     `- Programs: ${SITE_URL}/programs`,
+    ...PILLARS.map((p) => `- ${p.name} pillar: ${SITE_URL}/programs/${p.slug}`),
+    `- Guides: ${SITE_URL}/guides`,
+    ...GUIDES.map((g) => `- ${g.title}: ${SITE_URL}/guides/${g.slug}`),
     `- Launch: ${SITE_URL}/launch`,
     `- About: ${SITE_URL}/about`,
     `- FAQ: ${SITE_URL}/faq`,

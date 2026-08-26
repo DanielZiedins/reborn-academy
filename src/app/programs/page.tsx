@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { InnerShell } from "@/components/layout/inner-shell";
 import { InnerHero, MorePages, PageCta } from "@/components/layout/inner-hero";
 import { pageMetadata } from "@/lib/pages";
@@ -67,7 +68,7 @@ export default function ProgramsPage() {
                 name: `${p.name} — ${SITE_NAME}`,
                 description: p.description,
                 provider: { "@type": "EducationalOrganization", name: ORGANIZATION.name, url: SITE_URL },
-                url: `${SITE_URL}/programs#${p.name.toLowerCase()}`,
+                url: `${SITE_URL}/programs/${p.name.toLowerCase()}`,
                 inLanguage: "en-US",
               },
             })),
@@ -83,12 +84,19 @@ export default function ProgramsPage() {
         <div className="page-width">
           <div className="programs-page-grid">
             {PROGRAM_PILLARS.map((p) => (
-              <article key={p.name} id={p.name.toLowerCase()} className="programs-page-card">
-                <p className="eyebrow">{p.name}</p>
-                <h2>{p.name}</h2>
-                <p className="aeo-summary-text mt-4">{p.description}</p>
-                <p className="mt-4 text-sm leading-relaxed text-[#888]">{PILLAR_COPY[p.name]}</p>
-              </article>
+              <Link
+                key={p.name}
+                href={`/programs/${p.name.toLowerCase()}`}
+                className="programs-page-card programs-page-card-link"
+              >
+                <article id={p.name.toLowerCase()}>
+                  <p className="eyebrow">{p.name}</p>
+                  <h2>{p.name}</h2>
+                  <p className="aeo-summary-text mt-4">{p.description}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-[#888]">{PILLAR_COPY[p.name]}</p>
+                  <span className="guide-card-more">Open pillar →</span>
+                </article>
+              </Link>
             ))}
           </div>
           <article className="prose-reborn inner-narrow">

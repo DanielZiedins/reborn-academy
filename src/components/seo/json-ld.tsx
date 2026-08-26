@@ -85,6 +85,7 @@ function buildGraph(): Node[] {
     significantLink: [
       `${SITE_URL}/waitlist`,
       `${SITE_URL}/what-is-reborn-academy`,
+      `${SITE_URL}/guides`,
       `${SITE_URL}/faq`,
       `${SITE_URL}/launch`,
     ],
@@ -140,7 +141,7 @@ function buildGraph(): Node[] {
         name: `${p.name} — Reborn Academy`,
         description: p.description,
         provider: { "@id": orgId },
-        url: `${SITE_URL}/programs`,
+        url: `${SITE_URL}/programs/${p.name.toLowerCase()}`,
         educationalLevel: "Beginner to Advanced",
         inLanguage: "en-US",
         isAccessibleForFree: false,
@@ -245,6 +246,7 @@ function buildGraph(): Node[] {
     hasPart: [
       { "@type": "SiteNavigationElement", name: "Launch", url: `${SITE_URL}/launch` },
       { "@type": "SiteNavigationElement", name: "Programs", url: `${SITE_URL}/programs` },
+      { "@type": "SiteNavigationElement", name: "Guides", url: `${SITE_URL}/guides` },
       { "@type": "SiteNavigationElement", name: "What is Reborn Academy", url: `${SITE_URL}/what-is-reborn-academy` },
       { "@type": "SiteNavigationElement", name: "About", url: `${SITE_URL}/about` },
       { "@type": "SiteNavigationElement", name: "FAQ", url: `${SITE_URL}/faq` },

@@ -16,8 +16,7 @@ import {
 export const navLinks = [
   { href: "/launch", label: "Launch" },
   { href: "/programs", label: "Programs" },
-  { href: "/#academy", label: "Academy" },
-  { href: "/#giveaways", label: "Rewards" },
+  { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ];

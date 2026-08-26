@@ -12,7 +12,7 @@ export async function GET() {
     `Name: ${SITE_NAME}`,
     `Parent: Thy Kingdom Network`,
     `Standards: HTML5, CSS, Next.js`,
-    `Pages: /, /what-is-reborn-academy, /programs, /launch, /about, /faq, /waitlist`,
+    `Pages: /, /what-is-reborn-academy, /programs, /guides, /launch, /about, /faq, /waitlist`,
     `Components: Waitlist, SEO/AEO, RSS, Launch countdown`,
     `Launch: November 1, 2026`,
     ``,

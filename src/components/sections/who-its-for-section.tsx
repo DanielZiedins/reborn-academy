@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, X } from "lucide-react";
+import Link from "next/link";
 import { FadeInUp } from "@/components/ui/motion";
 import { CtaButton } from "@/components/ui/cta-button";
 
@@ -29,7 +30,10 @@ export function WhoItsForSection() {
           </h2>
           <p className="mt-4 max-w-2xl text-[#999]">
             Reborn Academy is built for a specific kind of believer. If that&apos;s you — the waitlist is
-            your next move.
+            your next move.{" "}
+            <Link href="/guides/christian-online-community" className="text-[#b8962e] hover:text-white">
+              Read about the community →
+            </Link>
           </p>
         </FadeInUp>
 

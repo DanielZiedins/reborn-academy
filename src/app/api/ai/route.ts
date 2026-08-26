@@ -37,6 +37,8 @@ export async function GET() {
     `- Waitlist: ${SITE_URL}/waitlist`,
     `- What is Reborn Academy: ${SITE_URL}/what-is-reborn-academy`,
     `- FAQ: ${SITE_URL}/faq`,
+    `- Guides: ${SITE_URL}/guides`,
+    `- Programs: ${SITE_URL}/programs`,
   ];
 
   return new Response(lines.join("\n"), {

@@ -59,32 +59,38 @@ export function ProgramsSection() {
                           aria-hidden="true"
                         />
                       </div>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="overflow-hidden"
-                          >
-                            <p className="mt-3 text-sm leading-relaxed text-[#888] text-left">
-                              {p.desc}
-                            </p>
-                            {p.tracks && (
-                              <div className="mt-4 flex flex-wrap gap-1.5">
-                                {p.tracks.map((t) => (
-                                  <span key={t} className="track-tag">
-                                    {t}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
                     </div>
                   </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden px-5 pb-5"
+                      >
+                        <p className="mt-1 text-sm leading-relaxed text-[#888] text-left">
+                          {p.desc}
+                        </p>
+                        {p.tracks && (
+                          <div className="mt-4 flex flex-wrap gap-1.5">
+                            {p.tracks.map((t) => (
+                              <span key={t} className="track-tag">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <Link
+                          href={`/programs/${p.id}`}
+                          className="mt-4 inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#b8962e] hover:text-white"
+                        >
+                          Open {p.title} pillar →
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.article>
               </FadeInUp>
             );

@@ -55,6 +55,7 @@ export const SITE_PAGES = [
   { href: "/", label: "Home" },
   { href: "/what-is-reborn-academy", label: "What is Reborn" },
   { href: "/programs", label: "Programs" },
+  { href: "/guides", label: "Guides" },
   { href: "/launch", label: "Launch" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
