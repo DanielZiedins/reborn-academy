@@ -56,6 +56,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Reborn Academy feed" />
         <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI site summary" />
+        <link rel="alternate" type="text/plain" href="/geo.txt" title="Generative engine facts" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">

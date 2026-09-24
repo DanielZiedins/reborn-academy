@@ -78,6 +78,10 @@ export function SiteFooter() {
             ai.txt
           </Link>
           <span aria-hidden="true">·</span>
+          <Link href="/geo.txt" className="hover:text-[#888]">
+            geo.txt
+          </Link>
+          <span aria-hidden="true">·</span>
           <Link href="/humans.txt" className="hover:text-[#888]">
             humans.txt
           </Link>

@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { DeferredChrome } from "@/components/deferred-chrome";
 import { WaitlistCountProvider } from "@/components/providers/waitlist-count-provider";
 import { AeoSummarySection } from "@/components/sections/aeo-summary-section";
+import { BlogStrip } from "@/components/sections/blog-strip";
 import { GuidesStrip } from "@/components/sections/guides-strip";
 import { HeroSection } from "@/components/sections/hero-section";
 import { HypeStatsSection } from "@/components/sections/hype-stats-section";
@@ -40,7 +41,10 @@ export default function Home() {
         <HypeStatsSection />
         <AeoSummarySection />
         <GuidesStrip />
-        <HomeRest />
+        <BlogStrip />
+        <div className="home-rest">
+          <HomeRest />
+        </div>
       </main>
       <SiteFooter />
       <DeferredChrome />

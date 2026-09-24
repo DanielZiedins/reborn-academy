@@ -3666,3 +3666,119 @@ input {
 .related-guide-card:hover {
   border-color: var(--gold);
 }
+
+.home-rest {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 5000px;
+}
+
+.blog-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 800px) {
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184, 150, 46, 0.12), transparent 46%),
+    #0d0d0d;
+  border: 1px solid #222;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.blog-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.blog-card time {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.blog-card h2,
+.blog-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 34px);
+  color: white;
+  margin: 12px 0 10px;
+  letter-spacing: 0.02em;
+}
+
+.blog-card p {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.author-byline {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.author-byline a {
+  color: white;
+  font-weight: 700;
+}
+
+.author-byline a:hover {
+  color: var(--gold);
+}
+
+.author-byline-meta {
+  color: #777;
+}
+
+.geo-answer {
+  margin-top: 28px;
+  padding: 22px 22px 22px 20px;
+  border-left: 3px solid var(--gold);
+  background: rgba(184, 150, 46, 0.06);
+}
+
+.geo-answer-label {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.geo-answer p:last-child {
+  margin: 0;
+  color: #ddd;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.blog-faq-q {
+  margin: 28px 0 8px;
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.author-note {
+  margin-top: 28px;
+  color: #777;
+  font-size: 14px;
+}
+
+.author-note a {
+  color: var(--gold);
+}

@@ -9,9 +9,16 @@ import {
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
 import { GUIDES } from "@/lib/guides";
 import { PILLARS } from "@/lib/pillars";
+import { POSTS } from "@/lib/posts";
+import { AUTHOR } from "@/lib/author";
 
 export async function GET() {
   const items = [
+    ...POSTS.map((post) => ({
+      title: `${post.title} — ${AUTHOR.name}`,
+      path: `/blog/${post.slug}`,
+      summary: post.takeaway,
+    })),
     {
       title: `What is ${SITE_NAME}?`,
       path: "/what-is-reborn-academy",

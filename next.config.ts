@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       { source: "/llms.txt", destination: "/api/llms" },
       { source: "/llms-full.txt", destination: "/api/llms-full" },
       { source: "/ai.txt", destination: "/api/ai" },
+      { source: "/geo.txt", destination: "/api/geo" },
       { source: "/humans.txt", destination: "/api/humans" },
       { source: "/.well-known/security.txt", destination: "/api/security" },
       { source: "/security.txt", destination: "/api/security" },
@@ -67,6 +68,15 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/ai.txt",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/geo.txt",
         headers: [
           {
             key: "Cache-Control",

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 import { GUIDES } from "@/lib/guides";
 import { PILLARS } from "@/lib/pillars";
+import { POSTS } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -21,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
+    { path: "/blog", changeFrequency: "weekly", priority: 0.9 },
+    ...POSTS.map((post) => ({
+      path: `/blog/${post.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.84,
+    })),
     { path: "/guides", changeFrequency: "weekly", priority: 0.88 },
     ...GUIDES.map((g) => ({
       path: `/guides/${g.slug}`,
@@ -33,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/llms.txt", changeFrequency: "monthly", priority: 0.3 },
     { path: "/llms-full.txt", changeFrequency: "monthly", priority: 0.3 },
     { path: "/ai.txt", changeFrequency: "monthly", priority: 0.3 },
+    { path: "/geo.txt", changeFrequency: "monthly", priority: 0.35 },
     { path: "/humans.txt", changeFrequency: "yearly", priority: 0.2 },
   ];
 

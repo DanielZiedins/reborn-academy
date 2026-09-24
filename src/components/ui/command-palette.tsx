@@ -97,6 +97,13 @@ export function CommandPalette() {
         run: () => go("/guides"),
       },
       {
+        id: "blog",
+        label: "Read the journal",
+        hint: "Journal",
+        icon: BookOpen,
+        run: () => go("/blog"),
+      },
+      {
         id: "guide",
         label: "What is Reborn Academy?",
         hint: "Guide",

@@ -14,6 +14,8 @@ import {
 import { LAUNCH_DATE_LABEL, launchFeatures } from "@/lib/launch";
 import { GUIDES } from "@/lib/guides";
 import { PILLARS } from "@/lib/pillars";
+import { POSTS } from "@/lib/posts";
+import { AUTHOR } from "@/lib/author";
 
 export async function GET() {
   const lines = [
@@ -58,6 +60,8 @@ export async function GET() {
     `- ${SITE_URL}/what-is-reborn-academy`,
     `- ${SITE_URL}/programs`,
     ...PILLARS.map((p) => `- ${SITE_URL}/programs/${p.slug}`),
+    `- ${SITE_URL}/blog`,
+    ...POSTS.map((post) => `- ${SITE_URL}/blog/${post.slug} — ${post.title} by ${AUTHOR.name}`),
     `- ${SITE_URL}/guides`,
     ...GUIDES.map((g) => `- ${SITE_URL}/guides/${g.slug}`),
     `- ${SITE_URL}/launch`,
@@ -99,6 +103,8 @@ export async function GET() {
     "",
     "## Machine-readable endpoints",
     `- ai.txt: ${SITE_URL}/ai.txt`,
+    `- geo.txt: ${SITE_URL}/geo.txt`,
+    `- geo.txt: ${SITE_URL}/geo.txt`,
     `- llms.txt: ${SITE_URL}/llms.txt`,
     `- sitemap: ${SITE_URL}/sitemap.xml`,
     `- RSS: ${SITE_URL}/feed.xml`,

@@ -39,6 +39,9 @@ export async function GET() {
     `- FAQ: ${SITE_URL}/faq`,
     `- Guides: ${SITE_URL}/guides`,
     `- Programs: ${SITE_URL}/programs`,
+    `- Journal: ${SITE_URL}/blog`,
+    `- geo.txt: ${SITE_URL}/geo.txt`,
+    `- Blog author: Daniel Ziedins (https://danielziedins.com)`,
   ];
 
   return new Response(lines.join("\n"), {

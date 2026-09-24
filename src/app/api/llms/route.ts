@@ -10,6 +10,8 @@ import {
 import { LAUNCH_DATE_LABEL, launchFeatures } from "@/lib/launch";
 import { GUIDES } from "@/lib/guides";
 import { PILLARS } from "@/lib/pillars";
+import { POSTS } from "@/lib/posts";
+import { AUTHOR } from "@/lib/author";
 
 export async function GET() {
   const lines = [
@@ -43,6 +45,8 @@ export async function GET() {
     `- What is Reborn Academy: ${SITE_URL}/what-is-reborn-academy`,
     `- Programs: ${SITE_URL}/programs`,
     ...PILLARS.map((p) => `- ${p.name} pillar: ${SITE_URL}/programs/${p.slug}`),
+    `- Journal by ${AUTHOR.name} (${AUTHOR.url}): ${SITE_URL}/blog`,
+    ...POSTS.map((post) => `- ${post.title}: ${SITE_URL}/blog/${post.slug}`),
     `- Guides: ${SITE_URL}/guides`,
     ...GUIDES.map((g) => `- ${g.title}: ${SITE_URL}/guides/${g.slug}`),
     `- Launch: ${SITE_URL}/launch`,
@@ -69,6 +73,7 @@ export async function GET() {
     "",
     "## AI / machine-readable",
     `- ai.txt: ${SITE_URL}/ai.txt`,
+    `- geo.txt: ${SITE_URL}/geo.txt`,
     `- Full documentation: ${SITE_URL}/llms-full.txt`,
   ];
 
