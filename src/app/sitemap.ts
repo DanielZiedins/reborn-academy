@@ -4,8 +4,10 @@ import { GUIDES } from "@/lib/guides";
 import { PILLARS } from "@/lib/pillars";
 import { POSTS } from "@/lib/posts";
 
+const CONTENT_DATE = new Date("2026-09-24T12:00:00Z");
+const FAQ_DATE = new Date("2026-09-25T12:00:00Z");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
 
   const pages: {
     path: string;
@@ -46,8 +48,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return pages.map((page) => ({
     url: page.path === "/" ? SITE_URL : `${SITE_URL}${page.path}`,
-    lastModified: now,
+    lastModified: lastModifiedFor(page.path),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));
+}
+
+function lastModifiedFor(path: string) {
+  const post = POSTS.find((item) => path === `/blog/${item.slug}`);
+  if (post) return new Date(`${post.dateModified}T12:00:00Z`);
+  if (path.startsWith("/programs/")) return FAQ_DATE;
+  if (
+    path === "/blog" ||
+    path === "/feed.xml" ||
+    path === "/geo.txt" ||
+    path === "/llms.txt" ||
+    path === "/llms-full.txt" ||
+    path === "/ai.txt" ||
+    path === "/faq"
+  ) {
+    return FAQ_DATE;
+  }
+  return CONTENT_DATE;
 }

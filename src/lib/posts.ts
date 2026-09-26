@@ -1,3 +1,5 @@
+import { LATEST_POSTS } from "./posts-latest";
+
 export type PostSection = {
   id: string;
   heading: string;
@@ -24,6 +26,7 @@ export type Post = {
 };
 
 export const POSTS: Post[] = [
+  ...LATEST_POSTS,
   {
     slug: "why-we-are-relaunching-reborn-academy",
     title: "Why We Are Relaunching Reborn Academy",

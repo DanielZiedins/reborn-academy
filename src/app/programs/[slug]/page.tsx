@@ -10,6 +10,15 @@ import { breadcrumbLd, PageJsonLd } from "@/components/seo/page-json-ld";
 import { PILLARS, getPillar } from "@/lib/pillars";
 import { ORGANIZATION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { LAUNCH_DATE_LABEL } from "@/lib/launch";
+import { AUTHOR } from "@/lib/author";
+
+const PILLAR_ESSAYS: Record<string, { slug: string; title: string }> = {
+  faith: { slug: "what-reborn-means", title: "What “Reborn” Means If You Are Already Saved" },
+  fitness: { slug: "fitness-is-stewardship", title: "Fitness Is Stewardship, Not a Brand" },
+  business: { slug: "kingdom-business-standards", title: "Kingdom Business Is a Standard, Not a Niche" },
+  finances: { slug: "money-is-a-tool", title: "Money Is a Tool. It Is Not a Savior." },
+  family: { slug: "ambition-and-the-household", title: "Ambition Has to Fit the Household" },
+};
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -37,6 +46,7 @@ export default async function PillarPage({ params }: Props) {
   if (!pillar) notFound();
 
   const path = `/programs/${pillar.slug}`;
+  const essay = PILLAR_ESSAYS[pillar.slug];
 
   return (
     <InnerShell>
@@ -74,7 +84,7 @@ export default async function PillarPage({ params }: Props) {
             headline: `${pillar.name} at ${SITE_NAME}`,
             description: pillar.description,
             datePublished: "2026-08-26",
-            dateModified: "2026-08-26",
+            dateModified: "2026-09-25",
             author: ORGANIZATION.founders.map((f) => ({ "@type": "Person", name: f.name })),
             publisher: {
               "@type": "EducationalOrganization",
@@ -120,6 +130,12 @@ export default async function PillarPage({ params }: Props) {
               See all five pillars on <Link href="/programs">Programs</Link>, or{" "}
               <Link href="/waitlist">join the waitlist</Link> for first access.
             </p>
+            {essay ? (
+              <p>
+                From the journal by {AUTHOR.name}:{" "}
+                <Link href={`/blog/${essay.slug}`}>{essay.title}</Link>.
+              </p>
+            ) : null}
           </div>
           <RelatedPillars current={pillar.slug} />
           <RelatedGuides />

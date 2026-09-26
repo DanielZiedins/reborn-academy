@@ -12,17 +12,28 @@ import { PILLARS } from "@/lib/pillars";
 import { POSTS } from "@/lib/posts";
 import { AUTHOR } from "@/lib/author";
 
+type FeedItem = {
+  title: string;
+  path: string;
+  summary: string;
+  date?: string;
+  author?: string;
+};
+
 export async function GET() {
-  const items = [
+  const items: FeedItem[] = [
     ...POSTS.map((post) => ({
       title: `${post.title} — ${AUTHOR.name}`,
       path: `/blog/${post.slug}`,
       summary: post.takeaway,
+      date: post.datePublished,
+      author: AUTHOR.name,
     })),
     {
       title: `What is ${SITE_NAME}?`,
       path: "/what-is-reborn-academy",
       summary: AEO_SUMMARY_PARAGRAPH,
+      date: "2026-09-24",
     },
     {
       title: `Official re-launch ${LAUNCH_DATE_LABEL}`,
@@ -32,7 +43,8 @@ export async function GET() {
     {
       title: "FAQ",
       path: "/faq",
-      summary: FAQ_ITEMS[0]?.answer ?? SITE_TAGLINE,
+      summary: FAQ_ITEMS.find((item) => item.id === "is-it-a-church")?.answer ?? SITE_TAGLINE,
+      date: "2026-09-25",
     },
     {
       title: "Programs — five pillars",
@@ -53,7 +65,7 @@ export async function GET() {
   ];
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>${SITE_NAME}</title>
     <link>${SITE_URL}</link>
@@ -65,7 +77,9 @@ export async function GET() {
         (item) => `<item>
       <title>${escapeXml(item.title)}</title>
       <link>${SITE_URL}${item.path}</link>
-      <guid>${SITE_URL}${item.path}</guid>
+      <guid isPermaLink="true">${SITE_URL}${item.path}</guid>
+      <pubDate>${rssDate(item.date ?? "2026-09-24")}</pubDate>
+      ${item.author ? `<dc:creator>${escapeXml(item.author)}</dc:creator>` : ""}
       <description>${escapeXml(item.summary)}</description>
     </item>`,
       )
@@ -73,7 +87,8 @@ export async function GET() {
     <item>
       <title>About ${SITE_NAME} — ${ORGANIZATION.founders.map((f) => f.name).join(" & ")}</title>
       <link>${SITE_URL}/about</link>
-      <guid>${SITE_URL}/about</guid>
+      <guid isPermaLink="true">${SITE_URL}/about</guid>
+      <pubDate>${rssDate("2026-09-24")}</pubDate>
       <description>Meet the founders of Reborn Academy.</description>
     </item>
   </channel>
@@ -85,6 +100,10 @@ export async function GET() {
       "Cache-Control": "public, max-age=3600",
     },
   });
+}
+
+function rssDate(isoDate: string) {
+  return new Date(`${isoDate}T12:00:00Z`).toUTCString();
 }
 
 function escapeXml(value: string) {

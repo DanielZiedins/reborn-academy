@@ -42,7 +42,7 @@ export function HeroSection() {
           alt="Warrior on a mountain peak — Reborn Academy faith-based transformation"
           fill
           priority
-          quality={70}
+          quality={52}
           className="object-cover object-center opacity-25 mix-blend-luminosity scale-110"
           sizes="100vw"
         />

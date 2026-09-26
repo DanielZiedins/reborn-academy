@@ -280,6 +280,18 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       "You receive a confirmation email and launch updates as November 1, 2026 approaches. Waitlist members get first access to the dashboard, custom app, community, affiliate program, and giveaways when doors open. You can unsubscribe from any email.",
   },
+  {
+    id: "is-it-a-church",
+    question: "Is Reborn Academy a church?",
+    answer:
+      "No. Reborn Academy is not a church and it does not replace your local congregation. It is an online faith-based academy and membership community — Christ at the center, Scripture as the filter — for ambitious Christians who want faith, fitness, business, finances, and family in one place. Keep worshiping with a church. Use the academy to grow in the work and the household.",
+  },
+  {
+    id: "job-and-family",
+    question: "Can I join if I have a job and a family?",
+    answer:
+      "Yes. Reborn Academy is built for ambitious Christians with real jobs and real households. Family is one of the five pillars, not an optional extra. The free waitlist at https://www.reborn-academy.com/waitlist does not require you to quit work or lock a paid plan. The re-launch is November 1, 2026.",
+  },
 ];
 
 /** Quotable summary for speakable schema + AEO crawlers */

@@ -9,7 +9,7 @@ import { POSTS } from "@/lib/posts";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const DESCRIPTION =
-  "Essays by Daniel Ziedins, co-founder of Reborn Academy, on Christian identity, Kingdom business, weekly discipline, and the November 1, 2026 re-launch.";
+  "Essays by Daniel Ziedins, co-founder of Reborn Academy, on Christian fitness as stewardship, money under Christ's lordship, ambition that fits the household, and the November 1, 2026 re-launch.";
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -19,8 +19,9 @@ export const metadata: Metadata = {
     keywords: [
       "daniel ziedins",
       "reborn academy blog",
-      "kingdom business essay",
-      "christian personal development essays",
+      "christian fitness stewardship",
+      "kingdom money",
+      "christian family and ambition",
       "reborn academy november 2026",
     ],
   }),
@@ -58,13 +59,17 @@ export default function BlogIndexPage() {
       <InnerHero
         eyebrow="Journal"
         title="Essays from the rebuild"
-        lede={`Written by ${AUTHOR.name}, co-founder of ${SITE_NAME}. Clear pieces on identity, work, and how to walk into November 1, 2026 without drifting.`}
+        lede={`Written by ${AUTHOR.name}, co-founder of ${SITE_NAME}. Fitness as stewardship, money as a tool, ambition that still fits the household, and how to walk into November 1, 2026.`}
       />
       <section className="section inner-section">
         <div className="page-width">
           <div className="blog-grid">
-            {POSTS.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
+            {POSTS.map((post, index) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={index === 0 ? "blog-card blog-card-featured" : "blog-card"}
+              >
                 <time dateTime={post.datePublished}>
                   {new Date(`${post.datePublished}T12:00:00`).toLocaleDateString("en-US", {
                     month: "long",
