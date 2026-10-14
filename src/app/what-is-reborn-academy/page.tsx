@@ -44,7 +44,7 @@ export default function WhatIsPage() {
             headline: "What is Reborn Academy?",
             description: AEO_SUMMARY_PARAGRAPH,
             datePublished: "2026-08-15",
-            dateModified: "2026-08-26",
+            dateModified: "2026-10-14",
             inLanguage: "en-US",
             author: ORGANIZATION.founders.map((f) => ({
               "@type": "Person",
@@ -138,6 +138,20 @@ export default function WhatIsPage() {
               real skill in business, fitness, wealth, and family leadership. The product is an
               ecosystem — dashboard, app, live rooms, affiliate tools, and a team that stays in the
               journey with you.
+            </p>
+
+            <h2>What will it not do?</h2>
+            <p>
+              Reborn Academy will not replace your local church, guarantee income, or do the work
+              while you watch.{" "}
+              <Link href="/blog/what-reborn-academy-will-not-do">
+                Daniel Ziedins wrote the limits here
+              </Link>
+              . The final stretch before {LAUNCH_DATE_LABEL} is in{" "}
+              <Link href="/blog/what-to-finish-before-november-1">
+                What to Finish Before November 1
+              </Link>
+              .
             </p>
 
             <h2>How do I join?</h2>

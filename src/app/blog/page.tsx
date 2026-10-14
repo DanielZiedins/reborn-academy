@@ -9,7 +9,7 @@ import { POSTS } from "@/lib/posts";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const DESCRIPTION =
-  "Essays by Daniel Ziedins, co-founder of Reborn Academy, on Christian fitness as stewardship, money under Christ's lordship, ambition that fits the household, and the November 1, 2026 re-launch.";
+  "Essays by Daniel Ziedins, co-founder of Reborn Academy, on what to finish before November 1, 2026, what the academy will not do, and how faith orders fitness, money, and the household.";
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     keywords: [
       "daniel ziedins",
       "reborn academy blog",
-      "christian fitness stewardship",
-      "kingdom money",
+      "what to do before reborn academy",
+      "what reborn academy will not do",
       "christian family and ambition",
       "reborn academy november 2026",
     ],
@@ -59,7 +59,7 @@ export default function BlogIndexPage() {
       <InnerHero
         eyebrow="Journal"
         title="Essays from the rebuild"
-        lede={`Written by ${AUTHOR.name}, co-founder of ${SITE_NAME}. Fitness as stewardship, money as a tool, ambition that still fits the household, and how to walk into November 1, 2026.`}
+        lede={`Written by ${AUTHOR.name}, co-founder of ${SITE_NAME}. What to finish before November 1, 2026, what the academy will not promise, and how faith orders the rest of the work.`}
       />
       <section className="section inner-section">
         <div className="page-width">

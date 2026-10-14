@@ -153,8 +153,7 @@ export function HeroSection() {
                 width={560}
                 height={480}
                 className="hero-visual-image hero-phoenix-crop"
-                priority
-                quality={80}
+                quality={70}
                 sizes="(max-width: 1024px) 0px, 560px"
               />
               <div className="hero-visual-shine" />

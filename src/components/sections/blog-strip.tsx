@@ -15,7 +15,7 @@ export function BlogStrip() {
           <a href={AUTHOR.url} className="text-[#b8962e] hover:text-white">
             {AUTHOR.name}
           </a>{" "}
-          on identity, Kingdom business, and how to walk into November 1, 2026 ready.
+          on what to finish before November 1, 2026, what the academy will not do, and how faith orders the work.
         </p>
 
         <div className="blog-grid mt-12">

@@ -28,15 +28,13 @@ type Props = {
 };
 
 export function LaunchCountdown({ variant = "hero" }: Props) {
-  const [time, setTime] = useState<TimeLeft | null>(null);
+  const [time, setTime] = useState<TimeLeft>(calcTimeLeft);
 
   useEffect(() => {
     setTime(calcTimeLeft());
     const id = setInterval(() => setTime(calcTimeLeft()), 1000);
     return () => clearInterval(id);
   }, []);
-
-  if (!time) return null;
 
   const units = [
     { label: "Days", value: time.days },
@@ -49,7 +47,7 @@ export function LaunchCountdown({ variant = "hero" }: Props) {
     return (
       <div className="countdown-compact">
         <span className="coming-soon-badge">Coming soon</span>
-        <span className="countdown-compact-text">
+        <span className="countdown-compact-text" suppressHydrationWarning>
           {time.launched ? "We're live!" : `${time.days}d ${time.hours}h until relaunch`}
         </span>
       </div>
@@ -69,7 +67,11 @@ export function LaunchCountdown({ variant = "hero" }: Props) {
       <div className="countdown-grid">
           {units.map((u) => (
             <div key={u.label} className="countdown-cell">
-              <span key={`${u.label}-${u.value}`} className="countdown-value countdown-tick">
+              <span
+                key={`${u.label}-${u.value}`}
+                className="countdown-value countdown-tick"
+                suppressHydrationWarning
+              >
                 {String(u.value).padStart(2, "0")}
               </span>
               <span className="countdown-label">{u.label}</span>

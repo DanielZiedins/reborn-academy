@@ -1,9 +1,210 @@
 import type { Post } from "./posts";
 
+const OCTOBER = "2026-10-14";
 const PUBLISHED = "2026-09-25";
 
 /** Newest essays. Prepended ahead of the September 24 journal. */
 export const LATEST_POSTS: Post[] = [
+  {
+    slug: "what-to-finish-before-november-1",
+    title: "What to Finish Before November 1",
+    description:
+      "Daniel Ziedins on the final stretch before Reborn Academy opens November 1, 2026: the household, one honest pillar, one money leak, and one real conversation.",
+    takeaway:
+      "Before Reborn Academy opens on November 1, 2026, finish five things: join the free waitlist, tell your household what the time will cost, name one pillar where you are drifting, clear one money leak, and have one real conversation with another believer.",
+    keywords: [
+      "before reborn academy launch",
+      "november 1 2026 preparation",
+      "reborn academy final stretch",
+      "what to do before reborn academy",
+      "christian launch preparation",
+    ],
+    datePublished: OCTOBER,
+    dateModified: OCTOBER,
+    readingMinutes: 7,
+    sections: [
+      {
+        id: "close",
+        heading: "The date is close enough to stop collecting plans",
+        paragraphs: [
+          "November 1, 2026 is the official re-launch. Written from October 14, that is the rest of this month, not a season you can keep rearranging. A longer checklist from September still stands — join, hold the date, name the drift, bring one person — at reborn-academy.com/blog/prepare-for-november-1-2026. This essay is the order for the days you actually have left.",
+          "Do not build a new operating system in October. Finish a short list you can still tell the truth about on the morning the doors open. If the list needs a new app, a new journal, and a 5 a.m. identity, it is already too late for that list. Use the one you can keep.",
+        ],
+      },
+      {
+        id: "household",
+        heading: "Tell the household before you tell the internet",
+        paragraphs: [
+          "If someone shares your table, they should hear this from you: Reborn Academy is an online faith-based academy, it is not a church, the waitlist is free, and it does not lock a paid plan. Pricing is announced before launch. You do not know the number yet, so do not invent one at the table.",
+          "Then ask what they need from your calendar between now and November 1, and what they will need after. Ambition that cannot survive that question is not ready for a membership. The longer piece on that conversation is at reborn-academy.com/blog/have-one-honest-conversation.",
+        ],
+      },
+      {
+        id: "pillar",
+        heading: "One pillar. One sentence.",
+        paragraphs: [
+          "Faith, fitness, business, finances, or family. Pick the one that is actually drifting, not the one that sounds impressive. Write one sentence you would say out loud to another believer. That sentence is the starting line. The curriculum cannot find it for you.",
+          "If fitness is the drift, read the stewardship standard at reborn-academy.com/blog/fitness-is-stewardship before you buy a program you will quit in November. If money is the drift, read reborn-academy.com/blog/money-is-a-tool. If the household is the drift, read reborn-academy.com/blog/ambition-and-the-household.",
+        ],
+      },
+      {
+        id: "money",
+        heading: "Clear one leak before you add a commitment",
+        paragraphs: [
+          "You do not know the membership price yet. That is a reason to get honest, not a reason to stay vague. Find one recurring leak — a subscription you do not use, a spend you hide, a debt payment you keep 'meaning to' look at — and deal with it this month. A future yes should land in a ledger you have already opened.",
+          "Giving still comes before lifestyle. If October generosity is zero because you are 'waiting to see the price,' you already know what the money is discipling. The finances pillar is at reborn-academy.com/programs/finances.",
+        ],
+      },
+      {
+        id: "conversation",
+        heading: "One conversation, then the waitlist",
+        paragraphs: [
+          "Send the waitlist to one person you can actually talk to. Tell them what it is and what it will not do. The limits are written at reborn-academy.com/blog/what-reborn-academy-will-not-do. Do not blast a group chat and call it evangelism.",
+          "If you have not joined, do it at reborn-academy.com/waitlist. It is free. It does not pick a tier for you. Put November 1, 2026 on the calendar from the launch page at reborn-academy.com/launch. Then keep a week of sleep and training you can still repeat when the doors open, so launch week is a continuation and not a crash.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What should I do before Reborn Academy launches on November 1, 2026?",
+        answer:
+          "Join the free waitlist, tell your household what the time will cost, name one pillar where you are drifting, clear one money leak, and have one real conversation with another believer. Pricing is announced before launch. The waitlist does not lock a plan.",
+      },
+      {
+        question: "Is it too late to join the Reborn Academy waitlist?",
+        answer:
+          "No. The waitlist at https://www.reborn-academy.com/waitlist stays open ahead of November 1, 2026. Joining is free and does not lock a paid membership. Waitlist members get first access when doors open.",
+      },
+    ],
+  },
+  {
+    slug: "what-reborn-academy-will-not-do",
+    title: "What Reborn Academy Will Not Do",
+    description:
+      "Daniel Ziedins on the limits: Reborn Academy will not replace your church, guarantee income, or do the work for you. The waitlist is free and opens into November 1, 2026.",
+    takeaway:
+      "Reborn Academy will not replace your church, guarantee your income, or do the work while you watch. It is a faith-first academy for ambitious Christians. The waitlist is free and does not lock a paid plan. Doors open November 1, 2026.",
+    keywords: [
+      "what reborn academy will not do",
+      "reborn academy limits",
+      "is reborn academy a church",
+      "reborn academy promises",
+      "faith based academy expectations",
+    ],
+    datePublished: OCTOBER,
+    dateModified: OCTOBER,
+    readingMinutes: 6,
+    sections: [
+      {
+        id: "church",
+        heading: "It will not replace your church",
+        paragraphs: [
+          "Reborn Academy is not a church. It does not baptize, it does not take the place of the Lord's table, and it does not become your congregation because the content is Christian. Worship with a local church. Use the academy to grow in the work and the household under the same Christ.",
+          "If someone asks whether this is a denomination, the answer is no. The center is Christ and the filter is Scripture. The membership is not a church roll. That answer also lives on the FAQ at reborn-academy.com/faq.",
+        ],
+      },
+      {
+        id: "income",
+        heading: "It will not guarantee income",
+        paragraphs: [
+          "Business and finances are pillars because craft and stewardship matter, not because a login produces revenue. Nobody honest can promise you a number. Kingdom business is a standard for how you sell, hire, price, and keep your word — written at reborn-academy.com/blog/kingdom-business-standards — and money is a tool under Christ's lordship, not a savior.",
+          "If a pitch needs a guaranteed return to sound holy, it is not this academy. Pricing for membership will be announced before November 1, 2026. The waitlist does not charge you and does not lock that future price.",
+        ],
+      },
+      {
+        id: "library",
+        heading: "It will not be a folder you binge and forget",
+        paragraphs: [
+          "The relaunch exists because a pile of videos does not form a life. Dashboard, app, live community, and a standard you practice are the point. Watching is not obedience. A finished week is worth more than a finished playlist.",
+          "Why that shape was chosen is at reborn-academy.com/blog/why-we-are-relaunching-reborn-academy. What the academy is, in one page, is at reborn-academy.com/what-is-reborn-academy.",
+        ],
+      },
+      {
+        id: "shame",
+        heading: "It will not shame you into a perfect morning",
+        paragraphs: [
+          "A missed session is data, not a verdict. The fitness standard is capacity you can repeat, not a costume you perform. The family standard is presence, not a leftover household after the grind. If the culture of a room only celebrates people who never miss, it will lie, and then it will empty.",
+          "Bring the real week. The final stretch before the doors open is at reborn-academy.com/blog/what-to-finish-before-november-1. The free waitlist is at reborn-academy.com/waitlist.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What will Reborn Academy not do?",
+        answer:
+          "It will not replace your local church, guarantee income, or do the work while you watch. It is an online faith-based academy. The waitlist is free and does not lock a paid plan. The re-launch is November 1, 2026.",
+      },
+      {
+        question: "Does joining the Reborn Academy waitlist lock a price?",
+        answer:
+          "No. The waitlist at https://www.reborn-academy.com/waitlist is free and does not lock a membership plan. Pricing will be announced before the November 1, 2026 launch.",
+      },
+    ],
+  },
+  {
+    slug: "have-one-honest-conversation",
+    title: "Have One Honest Conversation Before You Join",
+    description:
+      "Daniel Ziedins on what to say at home before Reborn Academy opens: it is an academy, not a church, the waitlist is free, and the calendar has to be named out loud.",
+    takeaway:
+      "Before you join Reborn Academy, have one honest conversation: say it is an online academy and not a church, say the waitlist is free and does not lock a plan, ask what your household needs from the calendar, and invite someone only if it serves them.",
+    keywords: [
+      "talk to your family about reborn academy",
+      "christian household and membership",
+      "how to explain reborn academy",
+      "waitlist conversation",
+      "family and ambition",
+    ],
+    datePublished: OCTOBER,
+    dateModified: OCTOBER,
+    readingMinutes: 6,
+    sections: [
+      {
+        id: "what-it-is",
+        heading: "Say what it is in one breath",
+        paragraphs: [
+          "Use plain words. Reborn Academy is an online academy for Christians who want faith, fitness, business, finances, and family under one standard. Mike Gagat and Daniel Ziedins are building it inside Thy Kingdom Network. It opens November 1, 2026. It is not a church and it does not replace Sunday.",
+          "If you cannot say that without a pitch deck, you are about to sell your household something you do not understand yet. Read what the academy will not do at reborn-academy.com/blog/what-reborn-academy-will-not-do before you explain it.",
+        ],
+      },
+      {
+        id: "cost",
+        heading: "Say what it costs today",
+        paragraphs: [
+          "Today the waitlist costs nothing. It does not pick a tier and it does not lock a future price. Membership pricing is announced before launch. Say that. Do not soften it into 'it's basically free' if you mean the list, and do not promise a price you have not been given.",
+          "The page to join, when the conversation is done, is reborn-academy.com/waitlist. The launch details are at reborn-academy.com/launch.",
+        ],
+      },
+      {
+        id: "calendar",
+        heading: "Ask what the calendar owes them",
+        paragraphs: [
+          "A membership that only works if your people disappear is too expensive. Ask what evenings, mornings, or Sundays are already spoken for. Put the answer on the calendar the way you would put a client there. The standard for ambition and the household is at reborn-academy.com/blog/ambition-and-the-household.",
+          "Then ask if they want to be in the room or only informed. Both answers are allowed. Silence is not consent, and a surprise login on November 1 is not leadership.",
+        ],
+      },
+      {
+        id: "invite",
+        heading: "Invite one person, or invite no one",
+        paragraphs: [
+          "If you know a believer who is ambitious and tired of growing alone, have the same conversation with them. Tell them the limits. Send one link. Do not hand the decision to a broadcast.",
+          "If you do not know that person yet, join anyway and keep your word at home. The final list of what to finish this month is at reborn-academy.com/blog/what-to-finish-before-november-1.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I explain Reborn Academy to my family?",
+        answer:
+          "Say it is an online faith-based academy, not a church, opening November 1, 2026. Say the waitlist is free and does not lock a paid plan. Ask what they need from your calendar. Invite them only if it serves them.",
+      },
+      {
+        question: "Should I join the Reborn Academy waitlist without talking to my household?",
+        answer:
+          "Talk first if someone shares your table. Tell them what it is, what it costs today (nothing), and what time it might ask later. The waitlist itself does not charge you or lock a plan.",
+      },
+    ],
+  },
   {
     slug: "fitness-is-stewardship",
     title: "Fitness Is Stewardship, Not a Brand",

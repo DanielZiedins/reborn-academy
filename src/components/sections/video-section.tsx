@@ -5,6 +5,8 @@ import { VideoFacade } from "@/components/ui/video-facade";
 export function VideoSection() {
   return (
     <section id="video" className="section relative overflow-hidden">
+      <link rel="preconnect" href="https://i.ytimg.com" />
+      <link rel="dns-prefetch" href="https://www.youtube.com" />
       <div className="absolute inset-0 gold-glow" />
       <div className="page-width relative z-10">
         <Reveal>

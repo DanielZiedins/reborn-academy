@@ -5,7 +5,8 @@ import { PILLARS } from "@/lib/pillars";
 import { POSTS } from "@/lib/posts";
 
 const CONTENT_DATE = new Date("2026-09-24T12:00:00Z");
-const FAQ_DATE = new Date("2026-09-25T12:00:00Z");
+const PILLAR_DATE = new Date("2026-09-25T12:00:00Z");
+const JOURNAL_DATE = new Date("2026-10-14T12:00:00Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
@@ -57,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 function lastModifiedFor(path: string) {
   const post = POSTS.find((item) => path === `/blog/${item.slug}`);
   if (post) return new Date(`${post.dateModified}T12:00:00Z`);
-  if (path.startsWith("/programs/")) return FAQ_DATE;
+  if (path.startsWith("/programs/")) return PILLAR_DATE;
   if (
     path === "/blog" ||
     path === "/feed.xml" ||
@@ -65,9 +66,11 @@ function lastModifiedFor(path: string) {
     path === "/llms.txt" ||
     path === "/llms-full.txt" ||
     path === "/ai.txt" ||
-    path === "/faq"
+    path === "/faq" ||
+    path === "/launch" ||
+    path === "/what-is-reborn-academy"
   ) {
-    return FAQ_DATE;
+    return JOURNAL_DATE;
   }
   return CONTENT_DATE;
 }

@@ -3,6 +3,18 @@ export const LAUNCH_DATE = new Date("2026-11-01T00:00:00-04:00");
 
 export const LAUNCH_DATE_LABEL = "November 1, 2026";
 
+/** Whole calendar days from today in Hamilton, Ontario until November 1, 2026. */
+export function calendarDaysUntilLaunch(from = new Date()) {
+  const today = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Toronto",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(from);
+  const diff = Date.parse("2026-11-01T00:00:00Z") - Date.parse(`${today}T00:00:00Z`);
+  return Math.max(0, Math.round(diff / 86_400_000));
+}
+
 export const launchFeatures = [
   {
     id: "dashboard",

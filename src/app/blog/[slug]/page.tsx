@@ -9,7 +9,7 @@ import { ShareBar } from "@/components/ui/share-bar";
 import { pageMetadata } from "@/lib/pages";
 import { breadcrumbLd, PageJsonLd } from "@/components/seo/page-json-ld";
 import { AUTHOR, authorLd } from "@/lib/author";
-import { POSTS, getPost } from "@/lib/posts";
+import { POSTS, getPost, relatedPosts } from "@/lib/posts";
 import { ORGANIZATION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const path = `/blog/${post.slug}`;
-  const related = POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const related = relatedPosts(post.slug);
 
   return (
     <InnerShell>
@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: Props) {
             <span aria-hidden="true">/</span>
             <Link href="/blog">Journal</Link>
             <span aria-hidden="true">/</span>
-            <span>Essay</span>
+            <span>{post.title}</span>
           </nav>
           <p className="eyebrow mt-8">Journal</p>
           <h1 className="display mt-4 text-[clamp(36px,6vw,68px)] text-white">{post.title}</h1>

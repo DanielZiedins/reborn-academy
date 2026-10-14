@@ -104,6 +104,20 @@ export function CommandPalette() {
         run: () => go("/blog"),
       },
       {
+        id: "essay-finish",
+        label: "What to finish before November 1",
+        hint: "Journal",
+        icon: BookOpen,
+        run: () => go("/blog/what-to-finish-before-november-1"),
+      },
+      {
+        id: "essay-limits",
+        label: "What Reborn Academy will not do",
+        hint: "Journal",
+        icon: BookOpen,
+        run: () => go("/blog/what-reborn-academy-will-not-do"),
+      },
+      {
         id: "guide",
         label: "What is Reborn Academy?",
         hint: "Guide",

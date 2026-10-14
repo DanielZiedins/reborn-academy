@@ -302,3 +302,21 @@ export const POSTS: Post[] = [
 export function getPost(slug: string) {
   return POSTS.find((post) => post.slug === slug);
 }
+
+/** Prefer essays that share keywords with the one being read. */
+export function relatedPosts(slug: string, limit = 3) {
+  const current = getPost(slug);
+  if (!current) return POSTS.slice(0, limit);
+  const keys = new Set(current.keywords);
+  return POSTS.filter((post) => post.slug !== slug)
+    .map((post) => ({
+      post,
+      score: post.keywords.reduce((n, keyword) => n + (keys.has(keyword) ? 1 : 0), 0),
+    }))
+    .sort(
+      (a, b) =>
+        b.score - a.score || b.post.datePublished.localeCompare(a.post.datePublished),
+    )
+    .slice(0, limit)
+    .map((item) => item.post);
+}

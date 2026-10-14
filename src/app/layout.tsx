@@ -15,7 +15,7 @@ const bebas = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-bebas",
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -50,8 +50,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
       <head>
-        <link rel="preconnect" href="https://i.ytimg.com" />
-        <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://vmpkiwfvnlzraabtjkig.supabase.co" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Reborn Academy feed" />
         <link rel="alternate" type="application/llms.txt" href="/llms.txt" title="LLM site summary" />

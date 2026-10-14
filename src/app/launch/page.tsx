@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { InnerShell } from "@/components/layout/inner-shell";
 import { InnerHero, MorePages, PageCta } from "@/components/layout/inner-hero";
 import { LaunchCountdown } from "@/components/ui/launch-countdown";
 import { AddToCalendar } from "@/components/ui/add-to-calendar";
-import { launchFeatures, LAUNCH_DATE_LABEL } from "@/lib/launch";
+import { calendarDaysUntilLaunch, launchFeatures, LAUNCH_DATE_LABEL } from "@/lib/launch";
 import { pageMetadata } from "@/lib/pages";
 import { breadcrumbLd, PageJsonLd } from "@/components/seo/page-json-ld";
 import { ORGANIZATION, SITE_NAME, SITE_URL } from "@/lib/seo";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = pageMetadata({
   title: `Official Re-Launch ${LAUNCH_DATE_LABEL}`,
@@ -21,6 +24,12 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function LaunchPage() {
+  const days = calendarDaysUntilLaunch();
+  const daysLabel =
+    days === 0
+      ? "Reborn Academy opens today, November 1, 2026, at midnight Eastern."
+      : `Reborn Academy opens November 1, 2026, at midnight Eastern — ${days} ${days === 1 ? "day" : "days"} from today in Hamilton, Ontario.`;
+
   return (
     <InnerShell>
       <PageJsonLd
@@ -63,6 +72,25 @@ export default function LaunchPage() {
           </div>
           <div className="mt-10 flex justify-center">
             <AddToCalendar />
+          </div>
+          <div className="prose-reborn mx-auto mt-16 max-w-3xl">
+            <p className="geo-answer">{daysLabel} The waitlist is free and does not lock a paid plan.</p>
+            <p>
+              Waitlist members go first when the dashboard, custom app, live community, affiliate
+              program, and launch giveaways open. Pricing is announced before that date. Joining
+              the list does not choose a tier for you.
+            </p>
+            <p>
+              Daniel Ziedins wrote what to finish before the doors open in{" "}
+              <Link href="/blog/what-to-finish-before-november-1">What to Finish Before November 1</Link>
+              , the limits in{" "}
+              <Link href="/blog/what-reborn-academy-will-not-do">What Reborn Academy Will Not Do</Link>
+              , and the household conversation in{" "}
+              <Link href="/blog/have-one-honest-conversation">
+                Have One Honest Conversation Before You Join
+              </Link>
+              .
+            </p>
           </div>
           <ul className="launch-page-list mt-16">
             {launchFeatures.map((f) => (

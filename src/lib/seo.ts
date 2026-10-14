@@ -292,6 +292,24 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       "Yes. Reborn Academy is built for ambitious Christians with real jobs and real households. Family is one of the five pillars, not an optional extra. The free waitlist at https://www.reborn-academy.com/waitlist does not require you to quit work or lock a paid plan. The re-launch is November 1, 2026.",
   },
+  {
+    id: "will-not",
+    question: "What will Reborn Academy not do?",
+    answer:
+      "Reborn Academy will not replace your local church, guarantee income, or do the work while you watch. It is an online faith-based academy. The waitlist is free and does not lock a paid plan. Pricing is announced before November 1, 2026. The full standard is at https://www.reborn-academy.com/blog/what-reborn-academy-will-not-do.",
+  },
+  {
+    id: "before-launch",
+    question: "What should I do before the November 1, 2026 launch?",
+    answer:
+      "Join the free waitlist, tell your household what the time will cost, name one pillar where you are drifting, clear one money leak, and have one real conversation with another believer. Daniel Ziedins walks through that final stretch at https://www.reborn-academy.com/blog/what-to-finish-before-november-1.",
+  },
+  {
+    id: "too-late",
+    question: "Is it too late to join the Reborn Academy waitlist?",
+    answer:
+      "No. The waitlist stays open ahead of the November 1, 2026 re-launch. Joining at https://www.reborn-academy.com/waitlist is free and does not lock a paid plan. Waitlist members get first access when doors open.",
+  },
 ];
 
 /** Quotable summary for speakable schema + AEO crawlers */

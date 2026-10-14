@@ -14,7 +14,6 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { AEO_DEFINITION } from "@/lib/seo";
 import { homeMetadata } from "@/lib/metadata";
 import { JsonLdScripts } from "@/components/seo/json-ld";
-import { preload } from "react-dom";
 
 const HomeRest = dynamic(() =>
   import("@/components/home-rest").then((m) => m.HomeRest),
@@ -23,8 +22,6 @@ const HomeRest = dynamic(() =>
 export const metadata = homeMetadata;
 
 export default function Home() {
-  preload("/images/phoenix-rise.png", { as: "image", fetchPriority: "high" });
-
   return (
     <WaitlistCountProvider>
       <JsonLdScripts />
